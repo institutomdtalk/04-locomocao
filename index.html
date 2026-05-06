@@ -1,943 +1,734 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD Talk — Sala de Espera</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<p>Accommodation — English for Travelers</p>
 <style>
-  :root {
-    --navy:       #0B1D3A;
-    --navy-deep:  #050D1A;
-    --navy-mid:   #0F2645;
-    --navy-light: #163158;
-    --gold:       #C4A45A;
-    --gold-light: #D4BA7A;
-    --gold-pale:  #E8D9B0;
-    --cream:      rgba(255,255,255,.88);
-    --muted:      rgba(255,255,255,.42);
-    --snake-head: #C4A45A;
-    --snake-body: #D4BA7A;
-    --snake-tail: rgba(196,164,90,0.4);
-    --cell:       44px;
-  }
+:root{
+  --bg:#F6F4F1;
+  --bg-warm:#EFECE7;
+  --bg-card:#FFFFFF;
+  --ink:#1E1C1A;
+  --ink-s:#3A3633;
+  --ink-m:#8C867D;
+  --wine:#6B2D3E;
+  --wine-d:#521F2E;
+  --wine-l:#8A3C52;
+  --wine-bg:#F8EFF1;
+  --cream:#F2EDE5;
+  --cream-d:#E8E1D6;
+  --warm-gray:#9E9790;
+  --warm-gray-l:#B5AFA8;
+  --warm-gray-bg:#F3F1EE;
+  --taupe:#6E665D;
+  --taupe-bg:#F0EDEA;
+  --clay:#A07B68;
+  --clay-bg:#F6F0EC;
+  --brd:#DDD8D0;
+  --brd-l:#E9E5DF;
+  --fd:'DM Serif Display',Georgia,serif;
+  --fb:'Satoshi',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --r:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--ink);line-height:1.78;font-size:16.5px;-webkit-font-smoothing:antialiased}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ══ HERO ══ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(155deg,#2A1520 0%,#3D2230 28%,#521F2E 52%,#3D2230 78%,#2A1520 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 32% 48%,rgba(138,60,82,.1) 0%,transparent 55%),radial-gradient(ellipse 45% 35% at 68% 45%,rgba(242,237,229,.03) 0%,transparent 50%);z-index:1}
+.hero::after{content:'';position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='<a href="http://www.w3.org/2000/svg" class="redactor-autoparser-object">http://www.w3.org/2000/svg</a>'%3E%3Crect x='29' y='29' width='2' height='2' fill='%23F2EDE5' fill-opacity='.05'/%3E%3C/svg%3E");z-index:1}
+.hero-c{position:relative;z-index:2;text-align:center;padding:2rem;max-width:780px;animation:hIn 1.3s ease-out}
+@keyframes hIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-block;font-family:var(--fb);font-size:.65rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--cream-d);border:1px solid rgba(242,237,229,.15);padding:.42rem 1.3rem;border-radius:100px;margin-bottom:2rem;background:rgba(242,237,229,.04)}
+.hero h1{font-family:var(--fd);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:400;color:var(--cream);line-height:1.12}
+.hero h1 em{font-style:italic;color:rgba(242,237,229,.55)}
+.hero-line{width:45px;height:1px;background:var(--cream-d);margin:1.8rem auto;opacity:.2}
+.hero-sub{font-family:var(--fd);font-size:1.1rem;color:rgba(242,237,229,.32);font-style:italic;line-height:1.7;max-width:500px;margin:0 auto}
+.hero-scroll{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(242,237,229,.14);font-family:var(--fb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;animation:pls 2.5s ease-in-out infinite}
+.hero-scroll svg{width:16px;height:16px;stroke:rgba(242,237,229,.14)}
+@keyframes pls{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:.8;transform:translateY(5px)}}
 
-  html, body {
-    width: 100%; height: 100%;
-    background: var(--navy-deep);
-    font-family: 'Raleway', sans-serif;
-    overflow: hidden;
-    color: var(--cream);
-  }
+/* ══ NAV ══ */
+.nav{position:sticky;top:0;z-index:100;background:rgba(246,244,241,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--brd-l)}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 2rem;overflow-x:auto;scrollbar-width:none}.nav-in::-webkit-scrollbar{display:none}
+.nav-ul{display:flex;list-style:none;white-space:nowrap}
+.nav-ul a{display:block;padding:.88rem .95rem;font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);text-decoration:none;border-bottom:2px solid transparent;transition:all .3s ease}
+.nav-ul a:hover{color:var(--wine);border-bottom-color:var(--wine)}
 
-  /* ─── DOT GRID BACKGROUND ─── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: radial-gradient(circle, rgba(196,164,90,.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* ══ MAIN ══ */
+.main{max-width:870px;margin:0 auto;padding:0 2rem 6rem}
+.sc{padding-top:4.5rem}
+.sc-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem;color:var(--wine)}
+.sc-tag .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:.55rem;font-weight:700;letter-spacing:0;color:#fff;background:var(--wine)}
+.sc h2{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:400;color:var(--ink);line-height:1.25;margin-bottom:.3rem}
+.sc-sub{font-family:var(--fd);font-size:1rem;color:var(--ink-m);font-style:italic;margin-bottom:2rem;line-height:1.6}
+.sc-intro{font-size:.95rem;color:var(--ink-s);line-height:1.85;margin-bottom:2rem;max-width:730px}
 
-  /* ─── AMBIENT GLOW ─── */
-  body::after {
-    content: '';
-    position: fixed;
-    top: -20%; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 600px;
-    background: radial-gradient(ellipse, rgba(196,164,90,.06) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* ══ CARDS ══ */
+.gr{margin-bottom:2.3rem}
+.gr-t{font-family:var(--fb);font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-s);margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--brd)}
+.cd{background:var(--bg-card);border:1px solid var(--brd-l);border-radius:var(--r);padding:1.1rem 1.35rem;margin-bottom:.48rem;transition:all .25s ease}
+.cd:hover{border-color:var(--brd);box-shadow:0 4px 16px rgba(30,28,26,.05);transform:translateY(-1px)}
+.cd .en{font-family:var(--fd);font-size:1.08rem;color:var(--ink);line-height:1.5;margin-bottom:.1rem}
+.cd .pt{font-family:var(--fb);font-size:.82rem;color:var(--ink-m);line-height:1.5}
 
-  /* ─── FLOATING GEO ELEMENTS ─── */
-  .geo {
-    position: fixed;
-    pointer-events: none;
-    z-index: 0;
-    animation: geoFloat 8s ease-in-out infinite;
-  }
-  .geo-ring {
-    width: 120px; height: 120px;
-    border: 1px solid rgba(196,164,90,.12);
-    border-radius: 50%;
-    top: 8%; right: 6%;
-    animation-duration: 11s;
-  }
-  .geo-ring-2 {
-    width: 60px; height: 60px;
-    border: 1px solid rgba(196,164,90,.18);
-    border-radius: 50%;
-    bottom: 14%; left: 4%;
-    animation-duration: 9s;
-    animation-delay: -3s;
-  }
-  .geo-diamond {
-    width: 18px; height: 18px;
-    border: 1px solid rgba(196,164,90,.3);
-    transform: rotate(45deg);
-    top: 50%; right: 4%;
-    animation-duration: 13s;
-    animation-delay: -5s;
-  }
-  .geo-line {
-    width: 1px; height: 80px;
-    background: linear-gradient(to bottom, transparent, rgba(196,164,90,.25), transparent);
-    top: 20%; left: 8%;
-    animation-duration: 7s;
-    animation-delay: -2s;
-  }
-  @keyframes geoFloat {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-14px); }
-  }
-  .geo-diamond { animation: geoPulse 13s ease-in-out infinite; }
-  @keyframes geoPulse {
-    0%, 100% { transform: rotate(45deg) scale(1);   opacity: .3; }
-    50%       { transform: rotate(45deg) scale(1.3); opacity: .7; }
-  }
+/* ══ NOTES ══ */
+.nt{margin-top:.45rem;font-family:var(--fb);font-size:.72rem;padding:.42rem .72rem;border-radius:6px;line-height:1.55;border-left:3px solid}
+.nt.wine{color:var(--wine-d);background:var(--wine-bg);border-color:var(--wine)}
+.nt.warm{color:var(--taupe);background:var(--warm-gray-bg);border-color:var(--warm-gray)}
+.nt.clay{color:#7A5A48;background:var(--clay-bg);border-color:var(--clay)}
+.nt.taupe{color:var(--taupe);background:var(--taupe-bg);border-color:var(--warm-gray-l)}
 
-  /* ─── LAYOUT ─── */
-  .wrapper {
-    position: relative; z-index: 1;
-    width: 100vw; height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 0 0 0 0;
-  }
+/* ══ VOCAB ══ */
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.4rem;margin:1.4rem 0 2rem}
+.vi{background:var(--bg-card);border:1px solid var(--brd-l);border-radius:8px;padding:.72rem .95rem;transition:all .2s ease}
+.vi:hover{border-color:var(--brd);box-shadow:0 2px 10px rgba(30,28,26,.04)}
+.vi .en{font-family:var(--fd);font-size:.9rem;color:var(--ink)}
+.vi .pt{font-family:var(--fb);font-size:.74rem;color:var(--ink-m)}
 
-  /* ─── HEADER ─── */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 48px 20px;
-    border-bottom: 1px solid rgba(196,164,90,.12);
-  }
-  .brand {
-    display: flex; flex-direction: column; gap: 2px;
-  }
-  .brand-overline {
-    font-family: 'Raleway', sans-serif;
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .brand-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 400;
-    letter-spacing: .08em;
-    color: var(--cream);
-    line-height: 1;
-  }
-  .brand-name em {
-    font-style: italic;
-    color: var(--gold);
-  }
+/* ══ DIALOGUE ══ */
+.dlg{background:var(--bg-card);border:1px solid var(--brd);border-radius:12px;padding:1.6rem 1.8rem;margin:1.8rem 0 2.3rem;position:relative;overflow:hidden}
+.dlg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--wine-d),var(--wine-l),var(--wine-d))}
+.dlg-h{font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-bottom:.18rem}
+.dlg-ctx{font-family:var(--fb);font-size:.78rem;color:var(--ink-m);font-style:italic;margin-bottom:1.2rem}
+.ln{display:flex;gap:.8rem;margin-bottom:.78rem;align-items:flex-start}
+.av{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.5rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
+.av.you{background:var(--wine-bg);color:var(--wine);border:1.5px solid rgba(107,45,62,.15)}
+.av.them{background:var(--warm-gray-bg);color:var(--taupe);border:1.5px solid rgba(158,151,144,.18)}
+.bb{flex:1}.bb .en{font-family:var(--fd);font-size:.96rem;color:var(--ink);line-height:1.5}
+.bb .pt{font-family:var(--fb);font-size:.76rem;color:var(--ink-m);line-height:1.5;margin-top:.06rem}
 
-  .header-right {
-    text-align: right;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .header-tag {
-    font-size: 9px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-  }
-  .header-score-label {
-    font-size: 11px;
-    letter-spacing: .12em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .header-score-val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 300;
-    color: var(--gold-light);
-    line-height: 1;
-    transition: all .2s;
-  }
+/* ══ BLOCKS ══ */
+.bk{border-radius:12px;padding:1.5rem 1.6rem;margin:1.8rem 0;border:1px solid}
+.bk h4{font-family:var(--fb);font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem}
+.bk p{font-size:.9rem;color:var(--ink-s);line-height:1.75}
+.bk.tip{background:linear-gradient(135deg,var(--cream),var(--bg));border-color:rgba(221,216,208,.3)}.bk.tip h4{color:var(--taupe)}
+.bk.cultural{background:linear-gradient(135deg,var(--wine-bg),var(--bg));border-color:rgba(107,45,62,.1)}.bk.cultural h4{color:var(--wine)}
+.bk.alert{background:linear-gradient(135deg,var(--clay-bg),var(--bg));border-color:rgba(160,123,104,.15)}.bk.alert h4{color:#7A5A48}
+.bk.note{background:linear-gradient(135deg,var(--warm-gray-bg),var(--bg));border-color:rgba(158,151,144,.15)}.bk.note h4{color:var(--warm-gray)}
 
-  /* ─── MAIN ARENA ─── */
-  .arena {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    flex: 1;
-    overflow: hidden;
-  }
+/* ══ BANNER ══ */
+.banner{background:linear-gradient(135deg,#2A1520 0%,#3D2230 50%,#2A1520 100%);padding:2.8rem 2rem;text-align:center;margin-top:3.5rem}
+.banner h3{font-family:var(--fd);font-size:1.6rem;color:rgba(242,237,229,.75);margin-bottom:.35rem}
+.banner h3 em{font-style:italic;color:var(--wine-l)}
+.banner p{font-family:var(--fb);font-size:.82rem;color:rgba(242,237,229,.28);max-width:460px;margin:0 auto;line-height:1.55}
 
-  #canvas-wrap {
-    position: relative;
-  }
+/* ══ SEP & FOOTER ══ */
+.sep{display:flex;align-items:center;justify-content:center;gap:1rem;padding:2.8rem 0 0}
+.sep::before,.sep::after{content:'';flex:1;max-width:100px;height:1px;background:var(--brd)}
+.sep .d{width:5px;height:5px;background:var(--wine);transform:rotate(45deg);opacity:.2}
+.footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--brd-l);margin-top:3rem}
+.footer-b{font-family:var(--fd);font-size:1.2rem;color:var(--ink);margin-bottom:.3rem}
+.footer-t{font-family:var(--fb);font-size:.74rem;color:var(--ink-m)}
 
-  canvas {
-    display: block;
-    border: 1px solid rgba(196,164,90,.2);
-    box-shadow:
-      0 0 60px rgba(196,164,90,.06),
-      inset 0 0 80px rgba(5,13,26,.6);
-    background: rgba(5,13,26,.55);
-    backdrop-filter: blur(2px);
-  }
-
-  /* ─── WORD FLOATING LABELS (rendered on canvas overlay) ─── */
-  .word-label {
-    position: absolute;
-    font-family: 'Raleway', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    pointer-events: none;
-    transition: opacity .4s, transform .3s;
-    white-space: nowrap;
-    text-shadow: 0 0 12px rgba(196,164,90,.4);
-  }
-  .word-label.eaten {
-    animation: wordEaten .6s forwards;
-  }
-  @keyframes wordEaten {
-    0%   { opacity: 1; transform: scale(1.4);    color: #fff; }
-    100% { opacity: 0; transform: scale(2) translateY(-20px); }
-  }
-
-  /* ─── OVERLAY SCREENS ─── */
-  .overlay {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 20px;
-    background: rgba(5,13,26,.85);
-    backdrop-filter: blur(6px);
-    z-index: 10;
-    transition: opacity .5s;
-  }
-  .overlay.hidden { opacity: 0; pointer-events: none; }
-
-  .overlay-overline {
-    font-size: 9px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-  }
-  .overlay-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 5vw, 60px);
-    font-weight: 300;
-    color: var(--cream);
-    text-align: center;
-    line-height: 1.1;
-  }
-  .overlay-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .overlay-divider {
-    width: 60px; height: 1px;
-    background: var(--gold);
-    opacity: .5;
-  }
-  .overlay-sub {
-    font-size: 12px;
-    letter-spacing: .1em;
-    color: var(--muted);
-    text-align: center;
-    line-height: 1.8;
-  }
-  .overlay-score-display {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 64px;
-    font-weight: 300;
-    color: var(--gold-light);
-    line-height: 1;
-  }
-  .overlay-score-label {
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: -12px;
-  }
-
-  .btn-start {
-    margin-top: 8px;
-    padding: 14px 48px;
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-family: 'Raleway', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .25s;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-start::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: var(--gold);
-    transform: translateX(-101%);
-    transition: transform .25s;
-    z-index: -1;
-  }
-  .btn-start:hover { color: var(--navy-deep); }
-  .btn-start:hover::before { transform: translateX(0); }
-
-  /* ─── GLOSSARY TICKER ─── */
-  .word-earned {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-style: italic;
-    color: var(--gold-light);
-    text-align: center;
-    pointer-events: none;
-    z-index: 20;
-    opacity: 0;
-    text-shadow: 0 0 30px rgba(196,164,90,.6);
-  }
-  .word-earned.show {
-    animation: wordPop .9s forwards;
-  }
-  @keyframes wordPop {
-    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-    20%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-    70%  { opacity: 1; transform: translate(-50%, -50%) scale(1);   }
-    100% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
-  }
-
-  /* ─── GLOSSARY SIDEBAR ─── */
-  .glossary {
-    position: fixed;
-    right: 32px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: 60vh;
-    overflow: hidden;
-    z-index: 5;
-    width: 220px;
-  }
-  .glossary-title {
-    font-size: 8px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 4px;
-    opacity: .7;
-  }
-  .glossary-entry {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    opacity: 0;
-    transform: translateX(20px);
-    animation: slideIn .4s forwards;
-    border-left: 1px solid rgba(196,164,90,.25);
-    padding-left: 10px;
-  }
-  @keyframes slideIn {
-    to { opacity: 1; transform: translateX(0); }
-  }
-  .glossary-word {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    color: var(--gold-light);
-    font-style: italic;
-  }
-  .glossary-pt {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: .05em;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    border-top: 1px solid rgba(196,164,90,.1);
-    padding: 14px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(to right, rgba(196,164,90,.04), transparent);
-  }
-  .footer-controls {
-    display: flex; gap: 24px;
-  }
-  .key-hint {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 10px;
-    letter-spacing: .12em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .key {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 22px; height: 22px;
-    border: 1px solid rgba(196,164,90,.3);
-    color: var(--gold);
-    font-size: 9px;
-    font-weight: 600;
-    border-radius: 3px;
-  }
-  .footer-level {
-    font-size: 10px;
-    letter-spacing: .15em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .footer-level span {
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-weight: 300;
-  }
-
-  /* score pulse */
-  @keyframes scorePulse {
-    0%,100% { transform: scale(1); }
-    50%      { transform: scale(1.15); color: #fff; }
-  }
-  .pulse { animation: scorePulse .3s ease; }
+@media(max-width:768px){.main{padding:0 1.2rem 4rem}.dlg{padding:1.3rem}.sc{padding-top:3.5rem}.vg{grid-template-columns:1fr}.nav-ul a{padding:.8rem .7rem;font-size:.58rem}}
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.fi.v{opacity:1;transform:translateY(0)}
 </style>
-</head>
-<body>
-
-<!-- Floating geometric decorations -->
-<div class="geo geo-ring"></div>
-<div class="geo geo-ring-2"></div>
-<div class="geo geo-diamond"></div>
-<div class="geo geo-line"></div>
-
-<!-- Word earned toast -->
-<div class="word-earned" id="wordToast"></div>
-
-<!-- Glossary sidebar -->
-<div class="glossary" id="glossary">
-  <div class="glossary-title">Vocabulário adquirido</div>
-</div>
-
-<div class="wrapper">
-  <!-- HEADER -->
-  <header>
-    <div class="brand">
-      <div class="brand-overline">Instituto MD Talk</div>
-      <div class="brand-name">MD <em>Talk</em></div>
-    </div>
-    <div class="header-right">
-      <div class="header-tag">Sala de Espera</div>
-      <div class="header-score-label">Score</div>
-      <div class="header-score-val" id="scoreDisplay">0</div>
-    </div>
-  </header>
-
-  <!-- ARENA -->
-  <div class="arena" id="arena">
-    <div id="canvas-wrap">
-      <canvas id="game"></canvas>
-    </div>
-
-    <!-- START OVERLAY -->
-    <div class="overlay" id="overlayStart">
-      <div class="overlay-overline">Sala de Espera · MD Talk</div>
-      <div class="overlay-title">Enquanto você <em>aguarda</em>,<br>pratique Medical English</div>
-      <div class="overlay-divider"></div>
-      <div class="overlay-sub">
-        Guie a cobra pelo grid e colete<br>
-        termos clínicos em inglês<br>
-        <br>
-        <span style="color:var(--gold-pale); font-size:10px; letter-spacing:.15em">USE AS SETAS OU WASD PARA MOVER</span>
-      </div>
-      <button class="btn-start" id="btnStart">Iniciar</button>
-    </div>
-
-    <!-- GAME OVER OVERLAY -->
-    <div class="overlay hidden" id="overlayOver">
-      <div class="overlay-overline">Session Ended</div>
-      <div class="overlay-title"><em>Game</em> Over</div>
-      <div class="overlay-divider"></div>
-      <div class="overlay-score-display" id="finalScore">0</div>
-      <div class="overlay-score-label">termos coletados</div>
-      <div class="overlay-sub" id="lastWord"></div>
-      <button class="btn-start" id="btnRestart">Nova Sessão</button>
-    </div>
+<section class="hero">
+  <div class="hero-c">
+    <div class="hero-badge">English for Travelers — Módulo Completo</div>
+    <h1>Accommodation &<br><em>Hotel Stays</em></h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">Da reserva ao check-out — cada frase, cada situação, cada problema resolvido em inglês.</p>
+    <div class="hero-scroll">Explore o módulo<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"></path></svg></div>
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-controls">
-      <div class="key-hint"><div class="key">↑</div><div class="key">↓</div><div class="key">←</div><div class="key">→</div> mover</div>
-      <div class="key-hint"><div class="key" style="width:32px">P</div> pausar</div>
-    </div>
-    <div class="footer-level">Nível <span id="levelDisplay">I</span></div>
-  </footer>
-</div>
-
-<script>
-// ─── MEDICAL VOCABULARY ───────────────────────────────────────────────────────
-const VOCAB = [
-  { en: 'dyspnea',        pt: 'dispneia' },
-  { en: 'tachycardia',    pt: 'taquicardia' },
-  { en: 'bradycardia',    pt: 'bradicardia' },
-  { en: 'hypertension',   pt: 'hipertensão' },
-  { en: 'hypoxia',        pt: 'hipóxia' },
-  { en: 'edema',          pt: 'edema' },
-  { en: 'syncope',        pt: 'síncope' },
-  { en: 'auscultation',   pt: 'ausculta' },
-  { en: 'pallor',         pt: 'palidez' },
-  { en: 'cyanosis',       pt: 'cianose' },
-  { en: 'hemoptysis',     pt: 'hemoptise' },
-  { en: 'dysphagia',      pt: 'disfagia' },
-  { en: 'paraesthesia',   pt: 'parestesia' },
-  { en: 'vertigo',        pt: 'vertigem' },
-  { en: 'prognosis',      pt: 'prognóstico' },
-  { en: 'anamnesis',      pt: 'anamnese' },
-  { en: 'triage',         pt: 'triagem' },
-  { en: 'palpation',      pt: 'palpação' },
-  { en: 'percussion',     pt: 'percussão' },
-  { en: 'jaundice',       pt: 'icterícia' },
-  { en: 'diuresis',       pt: 'diurese' },
-  { en: 'embolism',       pt: 'embolia' },
-  { en: 'ischemia',       pt: 'isquemia' },
-  { en: 'infarction',     pt: 'infarto' },
-  { en: 'necrosis',       pt: 'necrose' },
-  { en: 'fibrosis',       pt: 'fibrose' },
-  { en: 'stenosis',       pt: 'estenose' },
-  { en: 'thrombosis',     pt: 'trombose' },
-  { en: 'septicemia',     pt: 'septicemia' },
-  { en: 'hemostasis',     pt: 'hemostasia' },
-  { en: 'diaphoresis',    pt: 'diaforese' },
-  { en: 'epistaxis',      pt: 'epistaxe' },
-  { en: 'oliguria',       pt: 'oligúria' },
-  { en: 'anuria',         pt: 'anúria' },
-  { en: 'hematuria',      pt: 'hematúria' },
-  { en: 'cachexia',       pt: 'caquexia' },
-  { en: 'ascites',        pt: 'ascite' },
-  { en: 'atelectasis',    pt: 'atelectasia' },
-  { en: 'pneumothorax',   pt: 'pneumotórax' },
-  { en: 'emphysema',      pt: 'enfisema' },
-];
-
-const ROMAN = ['I','II','III','IV','V','VI','VII'];
-
-// ─── CANVAS SETUP ────────────────────────────────────────────────────────────
-const canvas = document.getElementById('game');
-const ctx    = canvas.getContext('2d');
-const arena  = document.getElementById('arena');
-
-let COLS, ROWS, CELL, W, H;
-
-function resize() {
-  const pad  = 32;
-  const aw   = arena.clientWidth  - pad * 2;
-  const ah   = arena.clientHeight - pad * 2;
-  CELL = window.innerWidth < 700 ? 36 : 44;
-  COLS = Math.floor(aw / CELL);
-  ROWS = Math.floor(ah / CELL);
-  // keep odd for centering
-  if (COLS % 2 === 0) COLS--;
-  if (ROWS % 2 === 0) ROWS--;
-  COLS = Math.max(11, COLS);
-  ROWS = Math.max(9,  ROWS);
-  W = COLS * CELL;
-  H = ROWS * CELL;
-  canvas.width  = W;
-  canvas.height = H;
-}
-resize();
-
-// ─── GAME STATE ──────────────────────────────────────────────────────────────
-let snake, dir, nextDir, food, score, level, speed, paused, running, intervalId;
-let collected = [];
-let foodItem  = null;
-
-function initGame() {
-  resize();
-  const cx = Math.floor(COLS / 2);
-  const cy = Math.floor(ROWS / 2);
-  snake   = [{ x: cx, y: cy }, { x: cx - 1, y: cy }, { x: cx - 2, y: cy }];
-  dir     = { x: 1, y: 0 };
-  nextDir = { x: 1, y: 0 };
-  score   = 0;
-  level   = 1;
-  speed   = 200;
-  paused  = false;
-  running = true;
-  collected = [];
-  foodItem  = null;
-  updateScoreDisplay();
-  updateLevelDisplay();
-  placeFood();
-  clearInterval(intervalId);
-  intervalId = setInterval(tick, speed);
-}
-
-// ─── FOOD WORDS ──────────────────────────────────────────────────────────────
-function placeFood() {
-  const remaining = VOCAB.filter(v => !collected.find(c => c.en === v.en));
-  const pool = remaining.length > 0 ? remaining : VOCAB;
-  const item = pool[Math.floor(Math.random() * pool.length)];
-  let x, y, safe;
-  let tries = 0;
-  do {
-    x = 1 + Math.floor(Math.random() * (COLS - 2));
-    y = 1 + Math.floor(Math.random() * (ROWS - 2));
-    safe = !snake.some(s => s.x === x && s.y === y);
-    tries++;
-  } while (!safe && tries < 200);
-  foodItem = { x, y, ...item };
-}
-
-// ─── TICK ────────────────────────────────────────────────────────────────────
-function tick() {
-  if (!running || paused) return;
-  dir = { ...nextDir };
-
-  const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
-
-  // wall collision
-  if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) {
-    gameOver(); return;
-  }
-  // self collision
-  if (snake.some(s => s.x === head.x && s.y === head.y)) {
-    gameOver(); return;
-  }
-
-  snake.unshift(head);
-
-  if (foodItem && head.x === foodItem.x && head.y === foodItem.y) {
-    eatFood();
-  } else {
-    snake.pop();
-  }
-
-  draw();
-}
-
-function eatFood() {
-  score++;
-  collected.unshift({ en: foodItem.en, pt: foodItem.pt });
-  if (collected.length > 8) collected = collected.slice(0, 8);
-  showWordToast(foodItem);
-  updateGlossary();
-  updateScoreDisplay();
-
-  // level up every 5 words
-  const newLevel = Math.floor(score / 5) + 1;
-  if (newLevel !== level) {
-    level = Math.min(newLevel, 7);
-    speed = Math.max(80, 200 - (level - 1) * 18);
-    clearInterval(intervalId);
-    intervalId = setInterval(tick, speed);
-    updateLevelDisplay();
-  }
-  placeFood();
-}
-
-function gameOver() {
-  running = false;
-  clearInterval(intervalId);
-  draw(); // draw final state
-  setTimeout(() => showOverlay('over'), 600);
-}
-
-// ─── DRAWING ─────────────────────────────────────────────────────────────────
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-
-  // subtle grid lines
-  ctx.strokeStyle = 'rgba(196,164,90,.04)';
-  ctx.lineWidth = 1;
-  for (let c = 0; c <= COLS; c++) {
-    ctx.beginPath(); ctx.moveTo(c * CELL, 0); ctx.lineTo(c * CELL, H); ctx.stroke();
-  }
-  for (let r = 0; r <= ROWS; r++) {
-    ctx.beginPath(); ctx.moveTo(0, r * CELL); ctx.lineTo(W, r * CELL); ctx.stroke();
-  }
-
-  // food word
-  if (foodItem) drawFoodWord(foodItem);
-
-  // snake
-  drawSnake();
-}
-
-function drawSnake() {
-  const len = snake.length;
-  snake.forEach((seg, i) => {
-    const t = i / len; // 0 = head, 1 = tail
-    const x = seg.x * CELL;
-    const y = seg.y * CELL;
-    const pad = 3 + t * 4;
-    const r   = (CELL / 2 - pad);
-    const alpha = 1 - t * 0.6;
-
-    if (i === 0) {
-      // head — gold with glow
-      ctx.save();
-      ctx.shadowColor  = 'rgba(196,164,90,.7)';
-      ctx.shadowBlur   = 18;
-      ctx.fillStyle    = '#C4A45A';
-      roundRect(ctx, x + 3, y + 3, CELL - 6, CELL - 6, 6);
-      ctx.fill();
-      ctx.restore();
-
-      // eyes
-      const eyeSize = 3;
-      ctx.fillStyle = '#050D1A';
-      const ex1 = x + CELL/2 - 4, ey1 = y + CELL/2 - 4;
-      const ex2 = x + CELL/2 + 2, ey2 = y + CELL/2 - 4;
-
-      if (dir.x === 1)  { drawEyes(x + CELL - 10, y + CELL/2 - 4, x + CELL - 10, y + CELL/2 + 2); }
-      else if (dir.x === -1) { drawEyes(x + 6, y + CELL/2 - 4, x + 6, y + CELL/2 + 2); }
-      else if (dir.y === -1) { drawEyes(x + CELL/2 - 4, y + 6, x + CELL/2 + 2, y + 6); }
-      else              { drawEyes(x + CELL/2 - 4, y + CELL - 10, x + CELL/2 + 2, y + CELL - 10); }
-
-    } else {
-      // body — gradient from gold to transparent
-      const gAlpha = Math.max(0.08, alpha);
-      ctx.fillStyle = `rgba(196,164,90,${gAlpha})`;
-      roundRect(ctx, x + 4 + t * 2, y + 4 + t * 2, CELL - 8 - t * 4, CELL - 8 - t * 4, 5);
-      ctx.fill();
-
-      // inner shine
-      if (alpha > 0.3) {
-        ctx.fillStyle = `rgba(212,186,122,${gAlpha * 0.4})`;
-        roundRect(ctx, x + 7, y + 7, CELL - 14, 4, 2);
-        ctx.fill();
-      }
-    }
-  });
-}
-
-function drawEyes(x1, y1, x2, y2) {
-  ctx.fillStyle = '#050D1A';
-  ctx.beginPath(); ctx.arc(x1 + 2, y1 + 2, 2.5, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x2 + 2, y2 + 2, 2.5, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.beginPath(); ctx.arc(x1 + 3, y1 + 1, 1, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x2 + 3, y2 + 1, 1, 0, Math.PI * 2); ctx.fill();
-}
-
-function drawFoodWord(item) {
-  const x = item.x * CELL;
-  const y = item.y * CELL;
-
-  // pulsing glow halo
-  const time = Date.now() / 1000;
-  const pulse = 0.5 + 0.5 * Math.sin(time * 3);
-
-  ctx.save();
-  ctx.shadowColor  = `rgba(196,164,90,${0.4 + pulse * 0.4})`;
-  ctx.shadowBlur   = 16 + pulse * 10;
-
-  // cell highlight
-  const grad = ctx.createRadialGradient(x + CELL/2, y + CELL/2, 2, x + CELL/2, y + CELL/2, CELL);
-  grad.addColorStop(0, `rgba(196,164,90,${0.22 + pulse * 0.1})`);
-  grad.addColorStop(1, 'rgba(196,164,90,0)');
-  ctx.fillStyle = grad;
-  roundRect(ctx, x + 1, y + 1, CELL - 2, CELL - 2, 8);
-  ctx.fill();
-
-  // border
-  ctx.strokeStyle = `rgba(196,164,90,${0.5 + pulse * 0.3})`;
-  ctx.lineWidth   = 1.5;
-  roundRect(ctx, x + 2, y + 2, CELL - 4, CELL - 4, 7);
-  ctx.stroke();
-  ctx.restore();
-
-  // word — adaptive font size
-  const word = item.en;
-  const maxW  = CELL * 3.2;
-  let fontSize = 11;
-  ctx.font = `500 ${fontSize}px 'Raleway', sans-serif`;
-  while (ctx.measureText(word).width > maxW - 8 && fontSize > 7) {
-    fontSize--;
-    ctx.font = `500 ${fontSize}px 'Raleway', sans-serif`;
-  }
-
-  ctx.save();
-  ctx.shadowColor = 'rgba(196,164,90,.8)';
-  ctx.shadowBlur  = 8;
-  ctx.fillStyle   = `rgba(232,217,176,${0.85 + pulse * 0.15})`;
-  ctx.textAlign   = 'center';
-  ctx.textBaseline = 'middle';
-
-  // draw word ABOVE the cell if it would overflow right
-  const textX = x + CELL / 2;
-  let textY   = y - 10; // above cell
-  if (textY < 14) textY = y + CELL + 14; // below instead
-
-  ctx.font = `500 ${fontSize}px 'Raleway', sans-serif`;
-  ctx.letterSpacing = '0.1em';
-  ctx.fillText(word.toUpperCase(), textX, textY);
-
-  // small gold dot on the cell center
-  ctx.fillStyle = `rgba(196,164,90,${0.7 + pulse * 0.3})`;
-  ctx.beginPath(); ctx.arc(x + CELL/2, y + CELL/2, 4, 0, Math.PI * 2); ctx.fill();
-
-  ctx.restore();
-}
-
-function roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
-}
-
-// ─── UI UPDATES ──────────────────────────────────────────────────────────────
-function updateScoreDisplay() {
-  const el = document.getElementById('scoreDisplay');
-  el.textContent = score;
-  el.classList.remove('pulse');
-  void el.offsetWidth;
-  el.classList.add('pulse');
-}
-
-function updateLevelDisplay() {
-  document.getElementById('levelDisplay').textContent = ROMAN[level - 1] || level;
-}
-
-function showWordToast(item) {
-  const el = document.getElementById('wordToast');
-  el.textContent = `${item.en} — ${item.pt}`;
-  el.classList.remove('show');
-  void el.offsetWidth;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 900);
-}
-
-function updateGlossary() {
-  const g = document.getElementById('glossary');
-  // keep title
-  const title = g.querySelector('.glossary-title');
-  g.innerHTML = '';
-  g.appendChild(title);
-  collected.slice(0, 6).forEach((item, i) => {
-    const entry = document.createElement('div');
-    entry.className = 'glossary-entry';
-    entry.style.animationDelay = `${i * 50}ms`;
-    entry.innerHTML = `<div class="glossary-word">${item.en}</div><div class="glossary-pt">${item.pt}</div>`;
-    g.appendChild(entry);
-  });
-}
-
-function showOverlay(which) {
-  document.getElementById('overlayStart').classList.add('hidden');
-  document.getElementById('overlayOver').classList.add('hidden');
-  if (which === 'start') {
-    document.getElementById('overlayStart').classList.remove('hidden');
-  } else if (which === 'over') {
-    document.getElementById('finalScore').textContent = score;
-    const last = collected[0];
-    document.getElementById('lastWord').textContent = last
-      ? `Último termo: ${last.en} — ${last.pt}`
-      : 'Continue praticando!';
-    document.getElementById('overlayOver').classList.remove('hidden');
-  }
-}
-
-// ─── ANIMATION LOOP (for food pulse while running) ────────────────────────────
-let rafId;
-function animate() {
-  if (running && !paused) draw();
-  rafId = requestAnimationFrame(animate);
-}
-animate();
-
-// ─── CONTROLS ────────────────────────────────────────────────────────────────
-document.addEventListener('keydown', e => {
-  const key = e.key;
-  if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d'].includes(key)) {
-    e.preventDefault();
-  }
-  if (!running) return;
-  if (key === 'p' || key === 'P') {
-    paused = !paused;
-    return;
-  }
-  const map = {
-    ArrowUp:    { x: 0,  y: -1 },
-    ArrowDown:  { x: 0,  y:  1 },
-    ArrowLeft:  { x: -1, y:  0 },
-    ArrowRight: { x: 1,  y:  0 },
-    w:          { x: 0,  y: -1 },
-    s:          { x: 0,  y:  1 },
-    a:          { x: -1, y:  0 },
-    d:          { x: 1,  y:  0 },
-  };
-  const nd = map[key];
-  if (nd && !(nd.x === -dir.x && nd.y === -dir.y)) {
-    nextDir = nd;
-  }
-});
-
-// Touch/swipe support
-let touchStart = null;
-canvas.addEventListener('touchstart', e => {
-  touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-}, { passive: true });
-canvas.addEventListener('touchend', e => {
-  if (!touchStart) return;
-  const dx = e.changedTouches[0].clientX - touchStart.x;
-  const dy = e.changedTouches[0].clientY - touchStart.y;
-  if (Math.abs(dx) > Math.abs(dy)) {
-    const nd = dx > 0 ? { x: 1, y: 0 } : { x: -1, y: 0 };
-    if (!(nd.x === -dir.x)) nextDir = nd;
-  } else {
-    const nd = dy > 0 ? { x: 0, y: 1 } : { x: 0, y: -1 };
-    if (!(nd.y === -dir.y)) nextDir = nd;
-  }
-  touchStart = null;
-}, { passive: true });
-
-// ─── BUTTONS ─────────────────────────────────────────────────────────────────
-document.getElementById('btnStart').addEventListener('click', () => {
-  document.getElementById('overlayStart').classList.add('hidden');
-  initGame();
-});
-document.getElementById('btnRestart').addEventListener('click', () => {
-  document.getElementById('overlayOver').classList.add('hidden');
-  initGame();
-});
-
-// ─── RESIZE ──────────────────────────────────────────────────────────────────
-window.addEventListener('resize', () => {
-  if (!running) { resize(); draw(); }
-});
-
-// initial draw
-draw();
-</script>
-</body>
-</html>
+</section>
+<nav class="nav"><div class="nav-in"><ul class="nav-ul">
+  <li><a href="#s1">Tipos de Hospedagem</a></li>
+  <li><a href="#s2">Reservando</a></li>
+  <li><a href="#s3">Check-in</a></li>
+  <li><a href="#s4">O Quarto</a></li>
+  <li><a href="#s5">Pedidos & Serviços</a></li>
+  <li><a href="#s6">Café da Manhã</a></li>
+  <li><a href="#s7">Restaurante & Bar</a></li>
+  <li><a href="#s8">Piscina, Spa & Academia</a></li>
+  <li><a href="#s9">Wi-Fi & Business</a></li>
+  <li><a href="#s10">Problemas no Quarto</a></li>
+  <li><a href="#s11">Reclamações</a></li>
+  <li><a href="#s12">Segurança</a></li>
+  <li><a href="#s13">Airbnb</a></li>
+  <li><a href="#s14">Check-out & Conta</a></li>
+  <li><a href="#s15">Gorjetas</a></li>
+</ul></div></nav>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p><main class="main"><p></p>
+<!-- ███ 1 ███ -->
+<section class="sc" id="s1">
+  <div class="sc-tag"><span class="n">1</span> Types of Accommodation</div>
+  <h2>Tipos de Hospedagem</h2>
+  <p class="sc-sub">Hotel, hostel, resort, Airbnb — o vocabulário que diferencia cada um.</p>
+  <p class="sc-intro">Antes de reservar, você precisa entender as diferenças entre os tipos de hospedagem no exterior. Os termos são usados em inglês no mundo todo, mas cada um tem nuances que afetam sua experiência — e seu bolso.</p>
+  <div class="vg">
+    <div class="vi"><div class="en">hotel</div><div class="pt">hotel (com recepção, serviço de quarto, etc.)</div></div>
+    <div class="vi"><div class="en">boutique hotel</div><div class="pt">hotel boutique (menor, design único)</div></div>
+    <div class="vi"><div class="en">resort</div><div class="pt">resort (tudo incluso ou com lazer completo)</div></div>
+    <div class="vi"><div class="en">hostel</div><div class="pt">hostel (quartos compartilhados, econômico)</div></div>
+    <div class="vi"><div class="en">bed & breakfast (B&B)</div><div class="pt">pousada com café da manhã</div></div>
+    <div class="vi"><div class="en">vacation rental / Airbnb</div><div class="pt">aluguel de temporada</div></div>
+    <div class="vi"><div class="en">motel</div><div class="pt">motel (à beira de estrada, entrada pelo estacionamento)</div></div>
+    <div class="vi"><div class="en">inn</div><div class="pt">estalagem / pousada</div></div>
+    <div class="vi"><div class="en">all-inclusive</div><div class="pt">tudo incluso (refeições e bebidas no preço)</div></div>
+    <div class="vi"><div class="en">suite / penthouse</div><div class="pt">suíte / cobertura</div></div>
+  </div>
+  <div class="bk cultural">
+    <h4>Nota Cultural</h4>
+    <p>Nos EUA, <strong>"motel"</strong> não tem a conotação que tem no Brasil. É simplesmente um hotel mais simples à beira de estrada, muito usado em road trips. Já <strong>"inn"</strong> transmite aconchego e charme — pense em pousadas de cidades pequenas na Nova Inglaterra ou Cotswolds. Na Europa, <strong>"pension"</strong> ou <strong>"pensione"</strong> é o equivalente a uma hospedagem familiar econômica.</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 2 ███ -->
+<section class="sc" id="s2">
+  <div class="sc-tag"><span class="n">2</span> Booking</div>
+  <h2>Fazendo a Reserva</h2>
+  <p class="sc-sub">Online ou por telefone — os termos e frases que você vai precisar.</p>
+  <div class="gr"><div class="gr-t">O que você vai encontrar nos sites de reserva</div>
+    <div class="cd"><div class="en">"Check-in date" / "Check-out date"</div><div class="pt">Data de entrada / Data de saída</div></div>
+    <div class="cd"><div class="en">"Number of guests" / "Number of rooms"</div><div class="pt">Número de hóspedes / Número de quartos</div></div>
+    <div class="cd"><div class="en">"Room type: single, double, twin, king, queen"</div><div class="pt">Tipo de quarto: solteiro, casal, duas camas, cama king, cama queen</div><div class="nt wine"><strong>Twin</strong> = duas camas de solteiro. <strong>Double</strong> = uma cama de casal. Muitos brasileiros confundem "twin" com "gêmeo" e pedem errado.</div></div>
+    <div class="cd"><div class="en">"Non-refundable rate" / "Free cancellation until [date]"</div><div class="pt">Tarifa não reembolsável / Cancelamento gratuito até [data]</div><div class="nt clay">Tarifas <strong>non-refundable</strong> são mais baratas, mas você perde tudo se cancelar. Na dúvida, pague um pouco mais pela opção com cancelamento flexível.</div></div>
+    <div class="cd"><div class="en">"Breakfast included" / "Room only"</div><div class="pt">Café da manhã incluso / Apenas o quarto</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Reservando por telefone ou e-mail</div>
+    <div class="cd"><div class="en">"I'd like to make a reservation for three nights, checking in on March 15th."</div><div class="pt">Gostaria de fazer uma reserva para três noites, com entrada no dia 15 de março.</div></div>
+    <div class="cd"><div class="en">"Do you have any availability for those dates?"</div><div class="pt">Vocês têm disponibilidade para essas datas?</div></div>
+    <div class="cd"><div class="en">"What's the rate for a double room with breakfast?"</div><div class="pt">Qual é a tarifa para um quarto de casal com café da manhã?</div></div>
+    <div class="cd"><div class="en">"Is there a discount for a longer stay?"</div><div class="pt">Tem desconto para estadias mais longas?</div></div>
+    <div class="cd"><div class="en">"I'd like a room with a view / on a higher floor / away from the elevator."</div><div class="pt">Gostaria de um quarto com vista / em andar alto / longe do elevador.</div></div>
+    <div class="cd"><div class="en">"What's your cancellation policy?"</div><div class="pt">Qual é a política de cancelamento de vocês?</div></div>
+    <div class="cd"><div class="en">"Can I request an early check-in / a late check-out?"</div><div class="pt">Posso solicitar check-in antecipado / check-out tardio?</div></div>
+    <div class="cd"><div class="en">"Do you have accessible rooms for guests with disabilities?"</div><div class="pt">Vocês têm quartos acessíveis para hóspedes com deficiência?</div></div>
+  </div>
+  <div class="bk tip">
+    <h4>Dica de Ouro</h4>
+    <p>Sempre confirme por e-mail após reservar por telefone. E ao chegar, tenha o número de confirmação (<strong>confirmation number</strong> ou <strong>booking reference</strong>) pronto — é a primeira coisa que vão pedir no check-in.</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 3 ███ -->
+<section class="sc" id="s3">
+  <div class="sc-tag"><span class="n">3</span> Check-in</div>
+  <h2>Fazendo o Check-in</h2>
+  <p class="sc-sub">Chegou ao hotel — tudo o que vai acontecer no balcão da recepção.</p>
+  <div class="gr"><div class="gr-t">O que o recepcionista vai dizer e perguntar</div>
+    <div class="cd"><div class="en">"Welcome! Do you have a reservation?"</div><div class="pt">Bem-vindo(a)! Tem uma reserva?</div></div>
+    <div class="cd"><div class="en">"May I have your name and confirmation number?"</div><div class="pt">Posso ter seu nome e número de confirmação?</div></div>
+    <div class="cd"><div class="en">"I'll need a credit card for incidentals."</div><div class="pt">Vou precisar de um cartão de crédito para despesas extras.</div><div class="nt wine"><strong>"Incidentals"</strong> = despesas extras (minibar, room service, estacionamento). O hotel faz um bloqueio temporário no cartão — chamado <strong>"hold"</strong> ou <strong>"pre-authorization"</strong>. Não é cobrança — é liberado no check-out.</div></div>
+    <div class="cd"><div class="en">"Your room is on the 8th floor. Here are your key cards."</div><div class="pt">Seu quarto é no 8º andar. Aqui estão seus cartões-chave.</div></div>
+    <div class="cd"><div class="en">"Breakfast is served from 7 to 10 AM in the restaurant on the ground floor."</div><div class="pt">O café da manhã é servido das 7h às 10h no restaurante do térreo.</div></div>
+    <div class="cd"><div class="en">"Check-out is at 11 AM."</div><div class="pt">O check-out é às 11h.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">O que você pode pedir no check-in</div>
+    <div class="cd"><div class="en">"Is there any chance of an upgrade?"</div><div class="pt">Tem alguma chance de upgrade?</div><div class="nt warm">Perguntar educadamente por upgrade no check-in é perfeitamente aceitável. Funciona melhor em horários de baixa ocupação, fora de temporada, ou se você é membro do programa de fidelidade.</div></div>
+    <div class="cd"><div class="en">"Could I have a room away from the street? I'm a light sleeper."</div><div class="pt">Poderia ser um quarto longe da rua? Tenho sono leve.</div></div>
+    <div class="cd"><div class="en">"We're celebrating our anniversary. Is there anything special you could do?"</div><div class="pt">Estamos comemorando nosso aniversário de casamento. Vocês poderiam fazer algo especial?</div></div>
+    <div class="cd"><div class="en">"Could I get an extra pillow / blanket sent to the room?"</div><div class="pt">Poderia enviar um travesseiro / cobertor extra para o quarto?</div></div>
+    <div class="cd"><div class="en">"Is there a safe in the room?"</div><div class="pt">Tem cofre no quarto?</div></div>
+    <div class="cd"><div class="en">"Where is the ice machine / vending machine?"</div><div class="pt">Onde fica a máquina de gelo / de snacks?</div><div class="nt wine">Nos EUA, hotéis sempre têm <strong>ice machine</strong> no corredor de cada andar — é cultura americana. Basta levar o balde de gelo (<strong>ice bucket</strong>) que está no quarto.</div></div>
+  </div>
+  <div class="dlg">
+    <div class="dlg-h">Diálogo Prático</div>
+    <div class="dlg-ctx">Recepção do hotel — chegando após um voo longo</div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Good evening! Welcome to the Grand Hyatt. Checking in?</div><div class="pt">Boa noite! Bem-vindo ao Grand Hyatt. Fazendo check-in?</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Yes, please. I have a reservation under Silva. Here's my confirmation number.</div><div class="pt">Sim, por favor. Tenho uma reserva no nome Silva. Aqui está meu número de confirmação.</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me pull that up. A king room for four nights, correct? I'll need your ID and a credit card for incidentals.</div><div class="pt">Deixe eu verificar. Quarto king por quatro noites, correto? Vou precisar de um documento e cartão de crédito para despesas extras.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Here you go. By the way, would it be possible to get a room on a higher floor with a city view?</div><div class="pt">Aqui está. A propósito, seria possível um quarto em andar mais alto com vista da cidade?</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me check... I have a room on the 22nd floor with a great view. No extra charge.</div><div class="pt">Deixe eu ver... Tenho um quarto no 22º andar com uma ótima vista. Sem custo adicional.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">That would be perfect. Thank you! One more thing — what time is check-out?</div><div class="pt">Seria perfeito. Obrigado! Mais uma coisa — que horas é o check-out?</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Check-out is at noon. The elevators are to your left. Enjoy your stay!</div><div class="pt">Check-out é ao meio-dia. Os elevadores ficam à sua esquerda. Aproveite a estadia!</div></div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 4 ███ -->
+<section class="sc" id="s4">
+  <div class="sc-tag"><span class="n">4</span> The Room</div>
+  <h2>O Quarto — Vocabulário Essencial</h2>
+  <p class="sc-sub">Tudo que está dentro do quarto e como pedir o que falta.</p>
+  <div class="vg">
+    <div class="vi"><div class="en">king bed / queen bed</div><div class="pt">cama king / queen</div></div>
+    <div class="vi"><div class="en">twin beds</div><div class="pt">duas camas de solteiro</div></div>
+    <div class="vi"><div class="en">pillows / extra pillows</div><div class="pt">travesseiros / extras</div></div>
+    <div class="vi"><div class="en">blanket / comforter / duvet</div><div class="pt">cobertor / edredom</div></div>
+    <div class="vi"><div class="en">sheets / towels</div><div class="pt">lençóis / toalhas</div></div>
+    <div class="vi"><div class="en">bathrobe / slippers</div><div class="pt">roupão / chinelos</div></div>
+    <div class="vi"><div class="en">minibar / fridge</div><div class="pt">frigobar / geladeira</div></div>
+    <div class="vi"><div class="en">safe / room safe</div><div class="pt">cofre do quarto</div></div>
+    <div class="vi"><div class="en">iron / ironing board</div><div class="pt">ferro de passar / tábua</div></div>
+    <div class="vi"><div class="en">hair dryer</div><div class="pt">secador de cabelo</div></div>
+    <div class="vi"><div class="en">outlet / power socket</div><div class="pt">tomada</div></div>
+    <div class="vi"><div class="en">thermostat / AC controls</div><div class="pt">termostato / controle do ar</div></div>
+    <div class="vi"><div class="en">blackout curtains</div><div class="pt">cortinas blackout</div></div>
+    <div class="vi"><div class="en">do not disturb sign</div><div class="pt">placa de "não perturbe"</div></div>
+    <div class="vi"><div class="en">key card</div><div class="pt">cartão-chave</div></div>
+    <div class="vi"><div class="en">balcony / terrace</div><div class="pt">sacada / terraço</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Pedindo o que falta</div>
+    <div class="cd"><div class="en">"Could you send extra towels to room 814, please?"</div><div class="pt">Poderia enviar toalhas extras para o quarto 814, por favor?</div></div>
+    <div class="cd"><div class="en">"I need a power adapter. Do you have one I can borrow?"</div><div class="pt">Preciso de um adaptador de tomada. Vocês têm um que eu possa usar?</div></div>
+    <div class="cd"><div class="en">"Is there a crib available? I'm traveling with a baby."</div><div class="pt">Tem berço disponível? Estou viajando com um bebê.</div></div>
+    <div class="cd"><div class="en">"Could I get a rollaway bed / an extra bed in the room?"</div><div class="pt">Poderia colocar uma cama extra no quarto?</div></div>
+    <div class="cd"><div class="en">"How do I use the safe? I can't seem to set the code."</div><div class="pt">Como uso o cofre? Não estou conseguindo configurar o código.</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 5 ███ -->
+<section class="sc" id="s5">
+  <div class="sc-tag"><span class="n">5</span> Requests & Services</div>
+  <h2>Pedidos e Serviços do Hotel</h2>
+  <p class="sc-sub">Room service, lavanderia, concierge e tudo o que o hotel pode fazer por você.</p>
+  <div class="gr"><div class="gr-t">Room service</div>
+    <div class="cd"><div class="en">"I'd like to order room service. Can I see the menu?"</div><div class="pt">Gostaria de pedir room service. Posso ver o cardápio?</div></div>
+    <div class="cd"><div class="en">"I'd like a club sandwich and a bottle of still water, please."</div><div class="pt">Gostaria de um sanduíche club e uma garrafa de água sem gás, por favor.</div><div class="nt wine"><strong>Still water</strong> = sem gás. <strong>Sparkling water</strong> = com gás. Nos EUA, "water" sem especificar = água da torneira com gelo.</div></div>
+    <div class="cd"><div class="en">"How long will it take?" / "Can you deliver it in about 30 minutes?"</div><div class="pt">Quanto tempo vai levar? / Podem entregar em uns 30 minutos?</div></div>
+    <div class="cd"><div class="en">"Please charge it to my room."</div><div class="pt">Por favor, coloque na conta do quarto.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Lavanderia e outros serviços</div>
+    <div class="cd"><div class="en">"Do you have a laundry service? How long does it take?"</div><div class="pt">Vocês têm serviço de lavanderia? Quanto tempo demora?</div></div>
+    <div class="cd"><div class="en">"I need these clothes dry-cleaned by tomorrow morning."</div><div class="pt">Preciso dessas roupas lavadas a seco até amanhã de manhã.</div></div>
+    <div class="cd"><div class="en">"Is there a self-service laundry room in the hotel?"</div><div class="pt">Tem lavanderia self-service no hotel?</div></div>
+    <div class="cd"><div class="en">"Could you arrange a taxi / airport transfer for tomorrow at 6 AM?"</div><div class="pt">Poderia providenciar um táxi / transfer para o aeroporto amanhã às 6h?</div></div>
+    <div class="cd"><div class="en">"I'd like a wake-up call at 6:30 AM, please."</div><div class="pt">Gostaria de uma ligação para acordar às 6h30, por favor.</div></div>
+    <div class="cd"><div class="en">"Can I leave my luggage at the front desk after check-out?"</div><div class="pt">Posso deixar minha bagagem na recepção após o check-out?</div></div>
+    <div class="cd"><div class="en">"Is there a bellhop who can help with my bags?"</div><div class="pt">Tem um carregador que pode ajudar com minhas malas?</div><div class="nt taupe"><strong>Bellhop</strong> (EUA) ou <strong>porter</strong> (UK) = carregador de malas do hotel. Gorjeta esperada: $1–2 por mala.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Concierge — pedidos especiais</div>
+    <div class="cd"><div class="en">"Can the concierge recommend a good restaurant nearby?"</div><div class="pt">O concierge pode recomendar um bom restaurante por perto?</div></div>
+    <div class="cd"><div class="en">"Could you help me book tickets for a show / a tour / a museum?"</div><div class="pt">Poderia me ajudar a reservar ingressos para um show / um tour / um museu?</div></div>
+    <div class="cd"><div class="en">"I need directions to [place]. Can you print a map for me?"</div><div class="pt">Preciso de direções para [lugar]. Pode imprimir um mapa para mim?</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 6 ███ -->
+<section class="sc" id="s6">
+  <div class="sc-tag"><span class="n">6</span> Breakfast</div>
+  <h2>Café da Manhã no Hotel</h2>
+  <p class="sc-sub">Buffet, continental, à la carte — e as frases que você vai usar na mesa.</p>
+  <div class="gr"><div class="gr-t">Tipos de café da manhã</div>
+    <div class="cd"><div class="en">"Continental breakfast"</div><div class="pt">Café continental — mais leve: pães, croissants, café, suco, frutas.</div></div>
+    <div class="cd"><div class="en">"Full breakfast / American breakfast"</div><div class="pt">Café completo — com ovos, bacon, panquecas, etc.</div></div>
+    <div class="cd"><div class="en">"English breakfast / Full English"</div><div class="pt">Café inglês completo — ovos, bacon, feijão, salsicha, torrada, tomate.</div></div>
+    <div class="cd"><div class="en">"Buffet breakfast"</div><div class="pt">Café em estilo buffet — você se serve.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Frases no café da manhã</div>
+    <div class="cd"><div class="en">"Is breakfast included in the room rate?"</div><div class="pt">O café da manhã está incluso na diária?</div></div>
+    <div class="cd"><div class="en">"What time does breakfast end?"</div><div class="pt">Que horas o café da manhã encerra?</div></div>
+    <div class="cd"><div class="en">"How would you like your eggs? — Scrambled, please."</div><div class="pt">Como gostaria dos seus ovos? — Mexidos, por favor.</div></div>
+    <div class="cd"><div class="en">"Could I have a coffee with milk, no sugar?"</div><div class="pt">Poderia trazer um café com leite, sem açúcar?</div></div>
+    <div class="cd"><div class="en">"Do you have any gluten-free / dairy-free options?"</div><div class="pt">Vocês têm opções sem glúten / sem lactose?</div></div>
+  </div>
+  <div class="vg">
+    <div class="vi"><div class="en">scrambled eggs</div><div class="pt">ovos mexidos</div></div>
+    <div class="vi"><div class="en">fried eggs (sunny side up)</div><div class="pt">ovo frito (gema para cima)</div></div>
+    <div class="vi"><div class="en">poached eggs</div><div class="pt">ovos pochê</div></div>
+    <div class="vi"><div class="en">hard-boiled / soft-boiled</div><div class="pt">cozido duro / cozido mole</div></div>
+    <div class="vi"><div class="en">omelet</div><div class="pt">omelete</div></div>
+    <div class="vi"><div class="en">pancakes / waffles / French toast</div><div class="pt">panquecas / waffles / rabanada</div></div>
+    <div class="vi"><div class="en">toast / bagel / croissant</div><div class="pt">torrada / bagel / croissant</div></div>
+    <div class="vi"><div class="en">cereal / oatmeal / granola</div><div class="pt">cereal / aveia / granola</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 7 ███ -->
+<section class="sc" id="s7">
+  <div class="sc-tag"><span class="n">7</span> Restaurant & Bar</div>
+  <h2>Restaurante e Bar do Hotel</h2>
+  <p class="sc-sub">Cobrando no quarto, pedindo no bar e entendendo a conta.</p>
+  <div class="gr"><div class="gr-t">Frases no restaurante do hotel</div>
+    <div class="cd"><div class="en">"I'd like a table for two, please. We're hotel guests."</div><div class="pt">Gostaria de uma mesa para dois, por favor. Somos hóspedes do hotel.</div></div>
+    <div class="cd"><div class="en">"Can I charge this to my room?" / "Room 814, please."</div><div class="pt">Posso colocar na conta do quarto? / Quarto 814, por favor.</div></div>
+    <div class="cd"><div class="en">"Is there a dress code for the restaurant?"</div><div class="pt">Tem código de vestimenta para o restaurante?</div></div>
+    <div class="cd"><div class="en">"Do we need a reservation for dinner?"</div><div class="pt">Precisamos de reserva para o jantar?</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">No bar do hotel</div>
+    <div class="cd"><div class="en">"Can I see the drinks menu?"</div><div class="pt">Posso ver o cardápio de bebidas?</div></div>
+    <div class="cd"><div class="en">"I'll have a glass of red wine / a gin and tonic / a sparkling water."</div><div class="pt">Quero uma taça de vinho tinto / um gin tônica / uma água com gás.</div></div>
+    <div class="cd"><div class="en">"Can I open a tab and close it later?" / "Put it on my room, please."</div><div class="pt">Posso abrir uma conta e fechar depois? / Coloque no meu quarto, por favor.</div><div class="nt wine"><strong>"Open a tab"</strong> = abrir uma conta corrente no bar (você paga tudo no final). Muito comum nos EUA. Geralmente pedem seu cartão ou número do quarto.</div></div>
+    <div class="cd"><div class="en">"Is there happy hour? What time does it start?"</div><div class="pt">Tem happy hour? A que horas começa?</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 8 ███ -->
+<section class="sc" id="s8">
+  <div class="sc-tag"><span class="n">8</span> Pool, Spa & Gym</div>
+  <h2>Piscina, Spa e Academia</h2>
+  <p class="sc-sub">As perguntas certas para aproveitar a estrutura do hotel.</p>
+  <div class="gr"><div class="gr-t">Frases essenciais</div>
+    <div class="cd"><div class="en">"What are the pool hours?"</div><div class="pt">Qual é o horário da piscina?</div></div>
+    <div class="cd"><div class="en">"Are towels provided at the pool?"</div><div class="pt">As toalhas são fornecidas na piscina?</div></div>
+    <div class="cd"><div class="en">"Is the gym open 24 hours?"</div><div class="pt">A academia funciona 24 horas?</div></div>
+    <div class="cd"><div class="en">"I'd like to book a spa treatment / a massage. What's available?"</div><div class="pt">Gostaria de reservar um tratamento no spa / uma massagem. O que têm disponível?</div></div>
+    <div class="cd"><div class="en">"Is the spa included in the room rate or is it an additional charge?"</div><div class="pt">O spa está incluso na diária ou é cobrança adicional?</div></div>
+    <div class="cd"><div class="en">"Can I reserve a cabana / a lounge chair by the pool?"</div><div class="pt">Posso reservar uma cabana / uma espreguiçadeira na piscina?</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 9 ███ -->
+<section class="sc" id="s9">
+  <div class="sc-tag"><span class="n">9</span> Wi-Fi & Business</div>
+  <h2>Wi-Fi, Impressão e Business Center</h2>
+  <p class="sc-sub">Conexão, trabalho remoto e serviços que o viajante moderno precisa.</p>
+  <div class="gr"><div class="gr-t">Frases essenciais</div>
+    <div class="cd"><div class="en">"What's the Wi-Fi password?"</div><div class="pt">Qual é a senha do Wi-Fi?</div></div>
+    <div class="cd"><div class="en">"Is the Wi-Fi free or is there a charge?"</div><div class="pt">O Wi-Fi é gratuito ou tem cobrança?</div></div>
+    <div class="cd"><div class="en">"The Wi-Fi in my room is really slow. Is there a way to get a better connection?"</div><div class="pt">O Wi-Fi no meu quarto está muito lento. Tem como melhorar a conexão?</div></div>
+    <div class="cd"><div class="en">"Do you have a business center where I can print documents?"</div><div class="pt">Vocês têm um business center onde posso imprimir documentos?</div></div>
+    <div class="cd"><div class="en">"Is there a meeting room I can use for a video call?"</div><div class="pt">Tem uma sala de reuniões que eu possa usar para uma videochamada?</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 10 ███ -->
+<section class="sc" id="s10">
+  <div class="sc-tag"><span class="n">10</span> Room Problems</div>
+  <h2>Problemas no Quarto</h2>
+  <p class="sc-sub">Ar-condicionado quebrado, barulho, chuveiro frio — como resolver tudo por telefone ou na recepção.</p>
+  <div class="gr"><div class="gr-t">Problemas com o quarto</div>
+    <div class="cd"><div class="en">"The air conditioning / heating isn't working."</div><div class="pt">O ar-condicionado / aquecimento não está funcionando.</div></div>
+    <div class="cd"><div class="en">"There's no hot water in the shower."</div><div class="pt">Não tem água quente no chuveiro.</div></div>
+    <div class="cd"><div class="en">"The toilet is clogged." / "The sink is leaking."</div><div class="pt">O vaso sanitário está entupido. / A pia está vazando.</div></div>
+    <div class="cd"><div class="en">"The TV remote / the lights / the safe isn't working."</div><div class="pt">O controle da TV / as luzes / o cofre não está funcionando.</div></div>
+    <div class="cd"><div class="en">"My key card stopped working. Can I get a new one?"</div><div class="pt">Meu cartão-chave parou de funcionar. Posso pegar um novo?</div></div>
+    <div class="cd"><div class="en">"The room hasn't been cleaned today."</div><div class="pt">O quarto não foi limpo hoje.</div></div>
+    <div class="cd"><div class="en">"There's a strange smell in the room."</div><div class="pt">Tem um cheiro estranho no quarto.</div></div>
+    <div class="cd"><div class="en">"I found a stain on the sheets / the towels aren't clean."</div><div class="pt">Encontrei uma mancha nos lençóis / as toalhas não estão limpas.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Barulho</div>
+    <div class="cd"><div class="en">"The room next door is very noisy. Could you call them or move me to a different room?"</div><div class="pt">O quarto ao lado está muito barulhento. Poderiam ligar para eles ou me mudar de quarto?</div></div>
+    <div class="cd"><div class="en">"I can hear the traffic / the elevator / construction from my room. Is there a quieter room available?"</div><div class="pt">Estou ouvindo o trânsito / o elevador / uma obra do meu quarto. Tem um quarto mais silencioso disponível?</div></div>
+  </div>
+  <div class="dlg">
+    <div class="dlg-h">Diálogo Prático</div>
+    <div class="dlg-ctx">Ligando para a recepção do quarto — problema com o ar-condicionado</div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Front desk, how can I help you?</div><div class="pt">Recepção, como posso ajudar?</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Hi, this is room 814. The air conditioning stopped working and the room is getting really warm.</div><div class="pt">Oi, aqui é o quarto 814. O ar-condicionado parou de funcionar e o quarto está ficando muito quente.</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">I'm sorry about that. I'll send maintenance right away. It should be about 15 minutes.</div><div class="pt">Sinto muito. Vou enviar a manutenção imediatamente. Deve levar uns 15 minutos.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">If they can't fix it tonight, could I be moved to another room?</div><div class="pt">Se não conseguirem consertar hoje à noite, eu poderia ser transferido para outro quarto?</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Absolutely. If it can't be resolved, we'll move you to an equivalent room right away.</div><div class="pt">Com certeza. Se não for resolvido, transferimos você para um quarto equivalente imediatamente.</div></div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 11 ███ -->
+<section class="sc" id="s11">
+  <div class="sc-tag"><span class="n">11</span> Complaints</div>
+  <h2>Fazendo Reclamações</h2>
+  <p class="sc-sub">Quando o problema é sério e uma simples ligação não resolve.</p>
+  <div class="gr"><div class="gr-t">Escalando o problema</div>
+    <div class="cd"><div class="en">"I've called the front desk twice and the issue hasn't been resolved."</div><div class="pt">Já liguei para a recepção duas vezes e o problema não foi resolvido.</div></div>
+    <div class="cd"><div class="en">"I'd like to speak with the manager, please."</div><div class="pt">Gostaria de falar com o gerente, por favor.</div></div>
+    <div class="cd"><div class="en">"This is unacceptable for the price we're paying."</div><div class="pt">Isso é inaceitável pelo preço que estamos pagando.</div></div>
+    <div class="cd"><div class="en">"I'd like a discount on my stay / a complimentary night due to the inconvenience."</div><div class="pt">Gostaria de um desconto na estadia / uma noite cortesia pela inconveniência.</div><div class="nt warm"><strong>"Complimentary"</strong> = cortesia / gratuito. É a forma elegante de pedir compensação. Hotéis de alto padrão frequentemente oferecem upgrades, refeições ou noites grátis para resolver problemas sérios.</div></div>
+    <div class="cd"><div class="en">"The room I was given does not match what I booked. I reserved a suite, not a standard room."</div><div class="pt">O quarto que recebi não corresponde ao que reservei. Reservei uma suíte, não um quarto padrão.</div></div>
+    <div class="cd"><div class="en">"I will be leaving a review about this experience if it isn't resolved."</div><div class="pt">Vou deixar uma avaliação sobre essa experiência se não for resolvido.</div></div>
+  </div>
+  <div class="bk note">
+    <h4>Frases que Funcionam Melhor</h4>
+    <p>A chave para reclamar em inglês é manter a <strong>firmeza sem perder a educação</strong>. Frases que começam com <strong>"I understand that…, but…"</strong> (Eu entendo que…, mas…) ou <strong>"I appreciate your help, however…"</strong> (Agradeço a ajuda, porém…) mostram que você é razoável — e aumentam muito suas chances de conseguir o que quer. Agressividade fecha portas; assertividade educada abre.</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 12 ███ -->
+<section class="sc" id="s12">
+  <div class="sc-tag"><span class="n">12</span> Safety</div>
+  <h2>Segurança na Hospedagem</h2>
+  <p class="sc-sub">Emergências, objetos perdidos e situações que ninguém quer ter — mas precisa saber lidar.</p>
+  <div class="gr"><div class="gr-t">Situações de segurança</div>
+    <div class="cd"><div class="en">"I locked myself out of my room. Can you let me in?"</div><div class="pt">Me tranquei para fora do quarto. Podem me deixar entrar?</div></div>
+    <div class="cd"><div class="en">"Something was stolen from my room. I need to report it."</div><div class="pt">Algo foi roubado do meu quarto. Preciso reportar.</div></div>
+    <div class="cd"><div class="en">"I left my passport / wallet / jewelry in the safe and I can't open it."</div><div class="pt">Deixei meu passaporte / carteira / joias no cofre e não consigo abrir.</div></div>
+    <div class="cd"><div class="en">"Is there a fire escape / emergency exit on this floor?"</div><div class="pt">Tem saída de emergência / escada de incêndio neste andar?</div></div>
+    <div class="cd"><div class="en">"The fire alarm went off. Is this a drill or a real emergency?"</div><div class="pt">O alarme de incêndio disparou. É um simulado ou emergência real?</div></div>
+    <div class="cd"><div class="en">"I don't feel safe in my room. There's someone suspicious in the hallway."</div><div class="pt">Não me sinto seguro(a) no meu quarto. Tem alguém suspeito no corredor.</div></div>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 13 ███ -->
+<section class="sc" id="s13">
+  <div class="sc-tag"><span class="n">13</span> Airbnb & Rentals</div>
+  <h2>Airbnb e Aluguéis de Temporada</h2>
+  <p class="sc-sub">Comunicação com o anfitrião, regras da casa e problemas na chegada.</p>
+  <div class="gr"><div class="gr-t">Mensagens para o anfitrião</div>
+    <div class="cd"><div class="en">"Hi! I just booked your place. What are the check-in instructions?"</div><div class="pt">Oi! Acabei de reservar seu espaço. Quais são as instruções de check-in?</div></div>
+    <div class="cd"><div class="en">"What time can we check in? Our flight arrives at 2 PM."</div><div class="pt">A que horas podemos fazer check-in? Nosso voo chega às 14h.</div></div>
+    <div class="cd"><div class="en">"Where is the lockbox / key safe? What's the code?"</div><div class="pt">Onde fica a caixa de chave? Qual é o código?</div><div class="nt wine"><strong>Lockbox</strong> ou <strong>key safe</strong> = caixinha com cadeado na porta onde o anfitrião deixa a chave. Muito comum em Airbnbs — permite check-in sem encontrar o anfitrião.</div></div>
+    <div class="cd"><div class="en">"Is there parking available? Where should we park?"</div><div class="pt">Tem estacionamento disponível? Onde devemos estacionar?</div></div>
+    <div class="cd"><div class="en">"How do I work the washing machine / the thermostat / the coffee maker?"</div><div class="pt">Como funciona a máquina de lavar / o termostato / a cafeteira?</div></div>
+    <div class="cd"><div class="en">"What are the house rules? Is there anything specific we should know?"</div><div class="pt">Quais são as regras da casa? Tem algo específico que devemos saber?</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Problemas na chegada</div>
+    <div class="cd"><div class="en">"The code for the lockbox isn't working. Can you help?"</div><div class="pt">O código da caixa de chave não está funcionando. Pode ajudar?</div></div>
+    <div class="cd"><div class="en">"The apartment doesn't match the listing. It's much smaller / dirtier than the photos."</div><div class="pt">O apartamento não corresponde ao anúncio. É muito menor / mais sujo do que nas fotos.</div></div>
+    <div class="cd"><div class="en">"There's no hot water / the Wi-Fi isn't working / the AC is broken."</div><div class="pt">Não tem água quente / o Wi-Fi não funciona / o ar-condicionado está quebrado.</div></div>
+    <div class="cd"><div class="en">"I need to contact Airbnb support to request a refund or alternative accommodation."</div><div class="pt">Preciso contatar o suporte do Airbnb para solicitar reembolso ou acomodação alternativa.</div></div>
+  </div>
+  <div class="bk alert">
+    <h4>Situação Grave — Quando o Anúncio Não Existe</h4>
+    <p>Se chegar ao endereço e o imóvel não existir, não corresponder ao anúncio, ou estiver em condições inseguras, <strong>documente tudo com fotos</strong>, entre em contato com o suporte da plataforma imediatamente, e peça <strong>"rebooking assistance"</strong> (assistência de reacomodação). Tanto Airbnb quanto Booking.com têm políticas de proteção — mas você precisa reportar dentro das primeiras 24 horas.</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ═══ BANNER ═══ -->
+<div class="banner"><div class="tc"><h3>Hora de <em>Partir</em></h3>
+<p>As últimas seções cobrem tudo sobre check-out, revisão da conta, minibar, gorjetas e despedidas.</p></div></div>
+<!-- ███ 14 ███ -->
+<section class="sc" id="s14">
+  <div class="sc-tag"><span class="n">14</span> Check-out & Bill</div>
+  <h2>Check-out e Revisão da Conta</h2>
+  <p class="sc-sub">O momento final — verifique tudo antes de pagar e ir embora.</p>
+  <div class="gr"><div class="gr-t">Frases do check-out</div>
+    <div class="cd"><div class="en">"I'd like to check out, please. Room 814."</div><div class="pt">Gostaria de fazer check-out, por favor. Quarto 814.</div></div>
+    <div class="cd"><div class="en">"Could I get a late check-out? Even just one extra hour would help."</div><div class="pt">Poderia fazer check-out mais tarde? Mesmo que seja só uma hora a mais, já ajudaria.</div></div>
+    <div class="cd"><div class="en">"Could I see an itemized bill, please?"</div><div class="pt">Poderia ver a conta detalhada, por favor?</div><div class="nt warm">Sempre peça a <strong>itemized bill</strong> (conta detalhada) antes de pagar. Revise cada cobrança — erros de minibar, diárias extras e taxas fantasmas são mais comuns do que você imagina.</div></div>
+    <div class="cd"><div class="en">"I didn't use the minibar. Can you remove that charge?"</div><div class="pt">Não usei o minibar. Pode remover essa cobrança?</div></div>
+    <div class="cd"><div class="en">"I was charged for two nights of parking, but I only used one. Can you check?"</div><div class="pt">Fui cobrado por duas noites de estacionamento, mas usei apenas uma. Pode verificar?</div></div>
+    <div class="cd"><div class="en">"What is this 'resort fee' / 'amenity fee' on my bill?"</div><div class="pt">O que é essa "taxa do resort" / "taxa de amenidades" na minha conta?</div><div class="nt clay"><strong>Resort fee</strong> ou <strong>amenity fee</strong> = taxa obrigatória que muitos hotéis nos EUA cobram além da diária ($25–50/noite). Inclui Wi-Fi, piscina, academia. Geralmente não aparece no preço do Booking — só na conta final. Pergunte ANTES de reservar.</div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Minibar — o campo minado</div>
+    <div class="cd"><div class="en">"I only had a bottle of water from the minibar. The rest I didn't touch."</div><div class="pt">Só consumi uma garrafa de água do minibar. O resto não toquei.</div></div>
+    <div class="cd"><div class="en">"I moved a few items to make space but I put them back. I shouldn't be charged."</div><div class="pt">Mexi em alguns itens para abrir espaço, mas coloquei de volta. Não deveria ser cobrado.</div><div class="nt clay">Muitos minibars modernos têm <strong>sensores de peso</strong> — basta tirar o item da prateleira por mais de 30 segundos e a cobrança é automática. Se foi acidental, avise a recepção imediatamente: <strong>"I accidentally moved an item in the minibar but didn't consume it. Please don't charge me."</strong></div></div>
+  </div>
+  <div class="gr"><div class="gr-t">Recibos e documentos</div>
+    <div class="cd"><div class="en">"Can I get a printed receipt / invoice for my stay?"</div><div class="pt">Posso ter um recibo / fatura impressa da estadia?</div></div>
+    <div class="cd"><div class="en">"I need an invoice with my company's name for reimbursement."</div><div class="pt">Preciso de uma fatura com o nome da minha empresa para reembolso.</div></div>
+    <div class="cd"><div class="en">"Can you email me a copy of the final bill?"</div><div class="pt">Pode me enviar por e-mail uma cópia da conta final?</div></div>
+  </div>
+  <div class="dlg">
+    <div class="dlg-h">Diálogo Prático</div>
+    <div class="dlg-ctx">Na recepção — fazendo check-out e revisando a conta</div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Good morning. I'd like to check out. Room 814. Could I see the itemized bill?</div><div class="pt">Bom dia. Gostaria de fazer check-out. Quarto 814. Poderia ver a conta detalhada?</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Of course. Here you go. Four nights, room service on Tuesday, and the minibar.</div><div class="pt">Claro. Aqui está. Quatro noites, room service na terça, e o minibar.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">I see a minibar charge for $18. I only had a water bottle — that was $5 on the menu. I think the rest is incorrect.</div><div class="pt">Estou vendo uma cobrança de minibar de $18. Só consumi uma garrafa de água — era $5 no cardápio. Acho que o restante está incorreto.</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me check with housekeeping. You're right — I'll correct that. The new total is $1,247.50.</div><div class="pt">Deixe eu verificar com a governança. Você tem razão — vou corrigir. O novo total é $1.247,50.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Perfect. Can I get a printed receipt and also have it emailed to me?</div><div class="pt">Perfeito. Posso ter um recibo impresso e também receber por e-mail?</div></div></div>
+    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Absolutely. And would you like us to hold your luggage? Your flight isn't until this evening.</div><div class="pt">Claro. E gostaria que guardássemos sua bagagem? Seu voo só é à noite.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">That would be great. I'll pick them up around 4 PM. Thank you for everything!</div><div class="pt">Seria ótimo. Passo para buscar por volta das 16h. Obrigado por tudo!</div></div></div>
+  </div>
+  <div class="bk tip">
+    <h4>Dica de Ouro</h4>
+    <p>No check-out, pergunte sempre: <strong>"Is there anything else on the bill I should know about?"</strong> (Tem mais alguma coisa na conta que eu deva saber?) — Essa frase pega cobranças de estacionamento, resort fee e outras taxas que podem estar escondidas. E sempre peça <strong>"Can you remove the hold on my credit card?"</strong> (Pode remover o bloqueio do meu cartão?) — o bloqueio de incidentals pode levar dias para cair se você não pedir.</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<!-- ███ 15 ███ -->
+<section class="sc" id="s15">
+  <div class="sc-tag"><span class="n">15</span> Tipping</div>
+  <h2>Gorjetas no Hotel</h2>
+  <p class="sc-sub">Quem, quanto e quando — o guia definitivo para não errar.</p>
+  <p class="sc-intro">Nos EUA, gorjeta em hotéis é esperada e faz parte da cultura. Não dar pode ser visto como indelicadeza. Na Europa, é menos obrigatória, mas apreciada. Aqui está o que se espera em cada situação.</p>
+  <div class="gr"><div class="gr-t">Guia de gorjetas — EUA</div>
+    <div class="cd"><div class="en">Bellhop / Porter — $1–2 per bag</div><div class="pt">Carregador de malas — $1–2 por mala.</div></div>
+    <div class="cd"><div class="en">Housekeeping — $2–5 per night</div><div class="pt">Governança / limpeza — $2–5 por noite.</div><div class="nt warm">Deixe a gorjeta no travesseiro ou na mesa de cabeceira com um bilhete: <strong>"Thank you / Housekeeping"</strong>. Faça isso diariamente, não apenas no último dia — a pessoa que limpa pode ser diferente a cada dia.</div></div>
+    <div class="cd"><div class="en">Concierge — $5–20 depending on the favor</div><div class="pt">Concierge — $5–20 dependendo do favor.</div></div>
+    <div class="cd"><div class="en">Valet parking — $2–5 when they bring the car</div><div class="pt">Manobrista — $2–5 quando trazem o carro.</div></div>
+    <div class="cd"><div class="en">Room service — 15–20% or check if gratuity is included</div><div class="pt">Room service — 15–20% ou verifique se a gorjeta já está inclusa.</div><div class="nt wine">Muitos hotéis já adicionam <strong>"service charge"</strong> ou <strong>"gratuity"</strong> automaticamente na conta de room service. Verifique antes de dar gorjeta extra — procure na conta: <strong>"Gratuity included"</strong> ou <strong>"Service charge: 18%"</strong>.</div></div>
+    <div class="cd"><div class="en">Doorman (hails a cab for you) — $1–2</div><div class="pt">Porteiro (chama um táxi para você) — $1–2.</div></div>
+  </div>
+  <div class="bk cultural">
+    <h4>Gorjetas na Europa e no Resto do Mundo</h4>
+    <p>Na <strong>Europa continental</strong>, gorjeta em hotel não é obrigatória, mas deixar 1–2 euros por noite para a governança é um gesto apreciado. No <strong>Reino Unido</strong>, é similar — discreto e opcional. No <strong>Japão</strong>, gorjeta é <strong>considerada ofensiva</strong> — nunca ofereça. Na <strong>Ásia</strong> em geral, varia muito por país. Na dúvida: pesquise antes da viagem ou pergunte na recepção: <strong>"Is tipping customary here?"</strong> (Gorjeta é costume aqui?)</p>
+  </div>
+</section>
+<div class="sep"><span class="d"></span></div>
+<footer class="footer">
+  <div class="footer-b">Accommodation & Hotel Stays — English for Travelers</div>
+  <p class="footer-t">Conteúdo exclusivo para fins educacionais.<br>Desenvolvido com excelência para alunos que buscam comunicação internacional de alto nível.</p>
+</footer>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p></main>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
