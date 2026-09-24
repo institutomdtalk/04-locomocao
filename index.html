@@ -1,29 +1,38 @@
-<p>Accommodation — English for Travelers</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting Around — English for Travelers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F6F4F1;
-  --bg-warm:#EFECE7;
+  --bg:#F5F4F1;
+  --bg-warm:#ECEAE5;
   --bg-card:#FFFFFF;
-  --ink:#1E1C1A;
-  --ink-s:#3A3633;
-  --ink-m:#8C867D;
-  --wine:#6B2D3E;
-  --wine-d:#521F2E;
-  --wine-l:#8A3C52;
-  --wine-bg:#F8EFF1;
-  --cream:#F2EDE5;
-  --cream-d:#E8E1D6;
-  --warm-gray:#9E9790;
-  --warm-gray-l:#B5AFA8;
-  --warm-gray-bg:#F3F1EE;
-  --taupe:#6E665D;
-  --taupe-bg:#F0EDEA;
-  --clay:#A07B68;
-  --clay-bg:#F6F0EC;
-  --brd:#DDD8D0;
-  --brd-l:#E9E5DF;
-  --fd:'DM Serif Display',Georgia,serif;
-  --fb:'Satoshi',sans-serif;
+  --ink:#1A1A1E;
+  --ink-s:#36363B;
+  --ink-m:#8A877F;
+  --navy:#1B2640;
+  --navy-d:#111A30;
+  --navy-l:#2C3D66;
+  --navy-bg:#ECF0F6;
+  --beige:#C2B9A7;
+  --beige-l:#D9D2C5;
+  --beige-bg:#F7F5F1;
+  --taupe:#7A7268;
+  --taupe-bg:#F3F1ED;
+  --warm:#A69882;
+  --warm-bg:#F6F3EE;
+  --stone:#5C5A55;
+  --alert-bg:#F8F0EE;
+  --alert:#8B5A4A;
+  --brd:#DDD9D2;
+  --brd-l:#E9E6E0;
+  --fd:'Fraunces',Georgia,serif;
+  --fb:'Karla',sans-serif;
   --fm:'JetBrains Mono',monospace;
   --r:10px;
 }
@@ -31,704 +40,613 @@
 body{font-family:var(--fb);background:var(--bg);color:var(--ink);line-height:1.78;font-size:16.5px;-webkit-font-smoothing:antialiased}
 
 /* ══ HERO ══ */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(155deg,#2A1520 0%,#3D2230 28%,#521F2E 52%,#3D2230 78%,#2A1520 100%)}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 32% 48%,rgba(138,60,82,.1) 0%,transparent 55%),radial-gradient(ellipse 45% 35% at 68% 45%,rgba(242,237,229,.03) 0%,transparent 50%);z-index:1}
-.hero::after{content:'';position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='<a href="http://www.w3.org/2000/svg" class="redactor-autoparser-object">http://www.w3.org/2000/svg</a>'%3E%3Crect x='29' y='29' width='2' height='2' fill='%23F2EDE5' fill-opacity='.05'/%3E%3C/svg%3E");z-index:1}
-.hero-c{position:relative;z-index:2;text-align:center;padding:2rem;max-width:780px;animation:hIn 1.3s ease-out}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(155deg,#111A30 0%,#1B2640 28%,#263556 55%,#1B2640 80%,#111A30 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 30% 50%,rgba(194,185,167,.06) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 70% 45%,rgba(166,152,130,.04) 0%,transparent 50%);z-index:1}
+.hero::after{content:'';position:absolute;inset:0;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0v80M0 40h80' stroke='%23C2B9A7' stroke-opacity='.04' stroke-width='.5'/%3E%3C/svg%3E");z-index:1}
+.hero-c{position:relative;z-index:2;text-align:center;padding:2rem;max-width:800px;animation:hIn 1.3s ease-out}
 @keyframes hIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-badge{display:inline-block;font-family:var(--fb);font-size:.65rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--cream-d);border:1px solid rgba(242,237,229,.15);padding:.42rem 1.3rem;border-radius:100px;margin-bottom:2rem;background:rgba(242,237,229,.04)}
-.hero h1{font-family:var(--fd);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:400;color:var(--cream);line-height:1.12}
-.hero h1 em{font-style:italic;color:rgba(242,237,229,.55)}
-.hero-line{width:45px;height:1px;background:var(--cream-d);margin:1.8rem auto;opacity:.2}
-.hero-sub{font-family:var(--fd);font-size:1.1rem;color:rgba(242,237,229,.32);font-style:italic;line-height:1.7;max-width:500px;margin:0 auto}
-.hero-scroll{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(242,237,229,.14);font-family:var(--fb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;animation:pls 2.5s ease-in-out infinite}
-.hero-scroll svg{width:16px;height:16px;stroke:rgba(242,237,229,.14)}
+.hero-badge{display:inline-block;font-family:var(--fb);font-size:.65rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--beige);border:1px solid rgba(194,185,167,.25);padding:.42rem 1.3rem;border-radius:100px;margin-bottom:2rem;background:rgba(194,185,167,.06)}
+.hero h1{font-family:var(--fd);font-size:clamp(2.4rem,5.5vw,4.5rem);font-weight:400;color:#F5F4F1;line-height:1.12}
+.hero h1 em{font-style:italic;color:var(--beige-l);font-weight:300}
+.hero-line{width:45px;height:1px;background:var(--beige);margin:1.8rem auto;opacity:.3}
+.hero-sub{font-family:var(--fd);font-size:1.1rem;color:rgba(245,244,241,.38);font-weight:300;font-style:italic;line-height:1.7;max-width:520px;margin:0 auto}
+.hero-scroll{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(245,244,241,.18);font-family:var(--fb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;animation:pls 2.5s ease-in-out infinite}
+.hero-scroll svg{width:16px;height:16px;stroke:rgba(245,244,241,.18)}
 @keyframes pls{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:.8;transform:translateY(5px)}}
 
 /* ══ NAV ══ */
-.nav{position:sticky;top:0;z-index:100;background:rgba(246,244,241,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--brd-l)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(245,244,241,.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--brd-l)}
 .nav-in{max-width:1200px;margin:0 auto;padding:0 2rem;overflow-x:auto;scrollbar-width:none}.nav-in::-webkit-scrollbar{display:none}
 .nav-ul{display:flex;list-style:none;white-space:nowrap}
 .nav-ul a{display:block;padding:.88rem .95rem;font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);text-decoration:none;border-bottom:2px solid transparent;transition:all .3s ease}
-.nav-ul a:hover{color:var(--wine);border-bottom-color:var(--wine)}
+.nav-ul a:hover{color:var(--navy);border-bottom-color:var(--navy)}
 
 /* ══ MAIN ══ */
 .main{max-width:870px;margin:0 auto;padding:0 2rem 6rem}
+
+/* ══ SECTION ══ */
 .sc{padding-top:4.5rem}
-.sc-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem;color:var(--wine)}
-.sc-tag .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:.55rem;font-weight:700;letter-spacing:0;color:#fff;background:var(--wine)}
-.sc h2{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:400;color:var(--ink);line-height:1.25;margin-bottom:.3rem}
-.sc-sub{font-family:var(--fd);font-size:1rem;color:var(--ink-m);font-style:italic;margin-bottom:2rem;line-height:1.6}
+.sc-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem;color:var(--navy-l)}
+.sc-tag .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:.55rem;font-weight:700;letter-spacing:0;color:#fff;background:var(--navy)}
+.sc h2{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:500;color:var(--ink);line-height:1.25;margin-bottom:.3rem}
+.sc-sub{font-family:var(--fd);font-size:1rem;color:var(--ink-m);font-weight:300;font-style:italic;margin-bottom:2rem;line-height:1.6}
 .sc-intro{font-size:.95rem;color:var(--ink-s);line-height:1.85;margin-bottom:2rem;max-width:730px}
 
-/* ══ CARDS ══ */
+/* ══ GROUPS & CARDS ══ */
 .gr{margin-bottom:2.3rem}
 .gr-t{font-family:var(--fb);font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-s);margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--brd)}
 .cd{background:var(--bg-card);border:1px solid var(--brd-l);border-radius:var(--r);padding:1.1rem 1.35rem;margin-bottom:.48rem;transition:all .25s ease}
-.cd:hover{border-color:var(--brd);box-shadow:0 4px 16px rgba(30,28,26,.05);transform:translateY(-1px)}
-.cd .en{font-family:var(--fd);font-size:1.08rem;color:var(--ink);line-height:1.5;margin-bottom:.1rem}
+.cd:hover{border-color:var(--brd);box-shadow:0 4px 16px rgba(26,26,30,.05);transform:translateY(-1px)}
+.cd .en{font-family:var(--fd);font-size:1.08rem;font-weight:500;color:var(--ink);line-height:1.5;margin-bottom:.1rem}
 .cd .pt{font-family:var(--fb);font-size:.82rem;color:var(--ink-m);line-height:1.5}
 
 /* ══ NOTES ══ */
 .nt{margin-top:.45rem;font-family:var(--fb);font-size:.72rem;padding:.42rem .72rem;border-radius:6px;line-height:1.55;border-left:3px solid}
-.nt.wine{color:var(--wine-d);background:var(--wine-bg);border-color:var(--wine)}
-.nt.warm{color:var(--taupe);background:var(--warm-gray-bg);border-color:var(--warm-gray)}
-.nt.clay{color:#7A5A48;background:var(--clay-bg);border-color:var(--clay)}
-.nt.taupe{color:var(--taupe);background:var(--taupe-bg);border-color:var(--warm-gray-l)}
+.nt.info{color:var(--navy-d);background:var(--navy-bg);border-color:var(--navy)}
+.nt.tip{color:var(--taupe);background:var(--taupe-bg);border-color:var(--warm)}
+.nt.warn{color:var(--alert);background:var(--alert-bg);border-color:var(--alert)}
+.nt.neutral{color:var(--stone);background:var(--beige-bg);border-color:var(--beige)}
 
 /* ══ VOCAB ══ */
 .vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.4rem;margin:1.4rem 0 2rem}
 .vi{background:var(--bg-card);border:1px solid var(--brd-l);border-radius:8px;padding:.72rem .95rem;transition:all .2s ease}
-.vi:hover{border-color:var(--brd);box-shadow:0 2px 10px rgba(30,28,26,.04)}
-.vi .en{font-family:var(--fd);font-size:.9rem;color:var(--ink)}
+.vi:hover{border-color:var(--brd);box-shadow:0 2px 10px rgba(26,26,30,.04)}
+.vi .en{font-family:var(--fd);font-size:.9rem;font-weight:500;color:var(--ink)}
 .vi .pt{font-family:var(--fb);font-size:.74rem;color:var(--ink-m)}
 
 /* ══ DIALOGUE ══ */
 .dlg{background:var(--bg-card);border:1px solid var(--brd);border-radius:12px;padding:1.6rem 1.8rem;margin:1.8rem 0 2.3rem;position:relative;overflow:hidden}
-.dlg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--wine-d),var(--wine-l),var(--wine-d))}
-.dlg-h{font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-bottom:.18rem}
+.dlg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy-d),var(--navy-l),var(--navy-d))}
+.dlg-h{font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--navy-l);margin-bottom:.18rem}
 .dlg-ctx{font-family:var(--fb);font-size:.78rem;color:var(--ink-m);font-style:italic;margin-bottom:1.2rem}
 .ln{display:flex;gap:.8rem;margin-bottom:.78rem;align-items:flex-start}
 .av{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.5rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
-.av.you{background:var(--wine-bg);color:var(--wine);border:1.5px solid rgba(107,45,62,.15)}
-.av.them{background:var(--warm-gray-bg);color:var(--taupe);border:1.5px solid rgba(158,151,144,.18)}
-.bb{flex:1}.bb .en{font-family:var(--fd);font-size:.96rem;color:var(--ink);line-height:1.5}
+.av.you{background:var(--navy-bg);color:var(--navy);border:1.5px solid rgba(27,38,64,.15)}
+.av.them{background:var(--warm-bg);color:var(--taupe);border:1.5px solid rgba(166,152,130,.2)}
+.bb{flex:1}.bb .en{font-family:var(--fd);font-size:.96rem;color:var(--ink);line-height:1.5;font-weight:500}
 .bb .pt{font-family:var(--fb);font-size:.76rem;color:var(--ink-m);line-height:1.5;margin-top:.06rem}
 
 /* ══ BLOCKS ══ */
-.bk{border-radius:12px;padding:1.5rem 1.6rem;margin:1.8rem 0;border:1px solid}
+.bk{border-radius:12px;padding:1.5rem 1.6rem;margin:1.8rem 0;position:relative;border:1px solid}
 .bk h4{font-family:var(--fb);font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem}
 .bk p{font-size:.9rem;color:var(--ink-s);line-height:1.75}
-.bk.tip{background:linear-gradient(135deg,var(--cream),var(--bg));border-color:rgba(221,216,208,.3)}.bk.tip h4{color:var(--taupe)}
-.bk.cultural{background:linear-gradient(135deg,var(--wine-bg),var(--bg));border-color:rgba(107,45,62,.1)}.bk.cultural h4{color:var(--wine)}
-.bk.alert{background:linear-gradient(135deg,var(--clay-bg),var(--bg));border-color:rgba(160,123,104,.15)}.bk.alert h4{color:#7A5A48}
-.bk.note{background:linear-gradient(135deg,var(--warm-gray-bg),var(--bg));border-color:rgba(158,151,144,.15)}.bk.note h4{color:var(--warm-gray)}
 
-/* ══ BANNER ══ */
-.banner{background:linear-gradient(135deg,#2A1520 0%,#3D2230 50%,#2A1520 100%);padding:2.8rem 2rem;text-align:center;margin-top:3.5rem}
-.banner h3{font-family:var(--fd);font-size:1.6rem;color:rgba(242,237,229,.75);margin-bottom:.35rem}
-.banner h3 em{font-style:italic;color:var(--wine-l)}
-.banner p{font-family:var(--fb);font-size:.82rem;color:rgba(242,237,229,.28);max-width:460px;margin:0 auto;line-height:1.55}
+.bk.tip{background:linear-gradient(135deg,var(--beige-bg),var(--bg));border-color:rgba(194,185,167,.2)}
+.bk.tip h4{color:var(--taupe)}
 
-/* ══ SEP & FOOTER ══ */
+.bk.cultural{background:linear-gradient(135deg,var(--navy-bg),var(--bg));border-color:rgba(27,38,64,.1)}
+.bk.cultural h4{color:var(--navy-l)}
+
+.bk.alert{background:linear-gradient(135deg,var(--alert-bg),var(--bg));border-color:rgba(139,90,74,.12)}
+.bk.alert h4{color:var(--alert)}
+
+.bk.warn{background:linear-gradient(135deg,var(--warm-bg),var(--bg));border-color:rgba(166,152,130,.18)}
+.bk.warn h4{color:var(--taupe)}
+
+/* ══ TRANSIT BANNER ══ */
+.transit-banner{background:linear-gradient(135deg,var(--navy-d) 0%,var(--navy) 50%,var(--navy-d) 100%);padding:2.8rem 2rem;text-align:center;margin-top:3.5rem;position:relative;overflow:hidden}
+.transit-banner .tc{position:relative;z-index:1}
+.transit-banner h3{font-family:var(--fd);font-size:1.6rem;font-weight:400;color:rgba(245,244,241,.8);margin-bottom:.35rem}
+.transit-banner h3 em{font-style:italic;color:var(--beige-l)}
+.transit-banner p{font-family:var(--fb);font-size:.82rem;color:rgba(245,244,241,.32);max-width:460px;margin:0 auto;line-height:1.55}
+
+/* ══ SEP ══ */
 .sep{display:flex;align-items:center;justify-content:center;gap:1rem;padding:2.8rem 0 0}
 .sep::before,.sep::after{content:'';flex:1;max-width:100px;height:1px;background:var(--brd)}
-.sep .d{width:5px;height:5px;background:var(--wine);transform:rotate(45deg);opacity:.2}
+.sep .d{width:5px;height:5px;background:var(--navy);transform:rotate(45deg);opacity:.2}
+
+/* ══ FOOTER ══ */
 .footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--brd-l);margin-top:3rem}
 .footer-b{font-family:var(--fd);font-size:1.2rem;color:var(--ink);margin-bottom:.3rem}
 .footer-t{font-family:var(--fb);font-size:.74rem;color:var(--ink-m)}
 
+/* ══ RESPONSIVE ══ */
 @media(max-width:768px){.main{padding:0 1.2rem 4rem}.dlg{padding:1.3rem}.sc{padding-top:3.5rem}.vg{grid-template-columns:1fr}.nav-ul a{padding:.8rem .7rem;font-size:.58rem}}
+
+/* ══ ANIM ══ */
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.fi.v{opacity:1;transform:translateY(0)}
+
+/* ═══ STANDARD FOOTER — identical on every Viaje Bem module ═══ */
+footer.footer{text-align:center;padding:3.5rem 2rem;border-top:1px solid #ECEEF4;margin-top:3rem;line-height:1.75}
+footer.footer .footer-b{font-family:'Bodoni Moda',Georgia,serif;font-size:1.25rem;font-weight:400;color:#141B2D;margin-bottom:.35rem}
+footer.footer .footer-t{font-family:'Nunito Sans',sans-serif;font-size:.76rem;color:#7A8299;line-height:1.75}
+footer.footer .sig{display:flex;flex-direction:column;align-items:center;gap:1.1rem;margin-top:2.2rem;padding-top:2rem;border-top:1px solid #ECEEF4}
+footer.footer .sig-n{font-family:'Bodoni Moda',Georgia,serif;font-size:1.05rem;font-weight:400;color:#141B2D}
+footer.footer .sig-r{font-family:'Nunito Sans',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C;margin-top:.15rem}
+
+/* ═══ VIAJE BEM — course-wide standard (same on every module) ═══ */
+main.main,main.course-body{max-width:880px}
+.vb-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch;margin:3.5rem 0 0;font-family:'Nunito Sans',sans-serif}
+.vb-pager a{text-decoration:none;color:#141B2D}
+.vb-card{display:flex;flex-direction:column;gap:.35rem;padding:1.1rem 1.3rem;border:1px solid #E3E5EC;border-radius:10px;background:#FFFFFF;transition:border-color .2s ease,transform .2s ease}
+.vb-card:hover{border-color:#C9A84C;transform:translateY(-2px)}
+.vb-next{text-align:right}
+.vb-dir{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7A8299}
+.vb-num{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C}
+.vb-t{font-family:'Bodoni Moda',Georgia,serif;font-size:1.08rem;line-height:1.3;color:#141B2D}
+.vb-home{align-self:center;display:inline-flex;align-items:center;padding:.55rem 1.1rem;border:1px solid #E3E5EC;border-radius:100px;background:#FFFFFF;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7A8299!important;white-space:nowrap}
+.vb-home:hover{border-color:#C9A84C;color:#141B2D!important}
+.vb-empty{visibility:hidden}
+.vb-dl{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin:3.5rem 0 0;font-family:'Nunito Sans',sans-serif}
+.vb-dl-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.6rem;border-radius:100px;background:#141B2D;color:#FFFFFF!important;text-decoration:none;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid #141B2D;transition:background .2s ease,border-color .2s ease}
+.vb-dl-btn:hover{background:#1F2A45;border-color:#C9A84C}
+.vb-dl-btn svg{width:16px;height:16px;fill:none;stroke:#C9A84C;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vb-dl-meta{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A8299}
+.vb-dl + .vb-pager{margin-top:2.2rem}
+@media(max-width:768px){.vb-pager{grid-template-columns:1fr}.vb-next{text-align:left}.vb-home{justify-self:center;order:3}.vb-empty{display:none}}
+
+.hero-badge,.hero-module{font-size:.67rem;letter-spacing:.28em;padding:.45rem 1.4rem;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.6rem);line-height:1.12}
+.hero-line{width:50px;margin:2rem auto}
+.hero-sub{font-size:1.15rem;max-width:540px}
+.hero-scroll{margin-top:3.5rem;gap:.4rem;font-size:.62rem;letter-spacing:.2em}
+.hero-scroll svg{width:16px;height:16px}
 </style>
+</head>
+<body>
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-c">
     <div class="hero-badge">English for Travelers — Módulo Completo</div>
-    <h1>Accommodation &<br><em>Hotel Stays</em></h1>
+    <h1>Getting <em>Around</em></h1>
     <div class="hero-line"></div>
-    <p class="hero-sub">Da reserva ao check-out — cada frase, cada situação, cada problema resolvido em inglês.</p>
+    <p class="hero-sub">Aluguel de carro, Uber, táxi, metrô, ônibus e como pedir direções.<br>Tudo para se mover com confiança no exterior.</p>
     <div class="hero-scroll">Explore o módulo<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"></path></svg></div>
   </div>
 </section>
+<!-- ═══ NAV ═══ -->
 <nav class="nav"><div class="nav-in"><ul class="nav-ul">
-  <li><a href="#s1">Tipos de Hospedagem</a></li>
-  <li><a href="#s2">Reservando</a></li>
-  <li><a href="#s3">Check-in</a></li>
-  <li><a href="#s4">O Quarto</a></li>
-  <li><a href="#s5">Pedidos & Serviços</a></li>
-  <li><a href="#s6">Café da Manhã</a></li>
-  <li><a href="#s7">Restaurante & Bar</a></li>
-  <li><a href="#s8">Piscina, Spa & Academia</a></li>
-  <li><a href="#s9">Wi-Fi & Business</a></li>
-  <li><a href="#s10">Problemas no Quarto</a></li>
-  <li><a href="#s11">Reclamações</a></li>
-  <li><a href="#s12">Segurança</a></li>
-  <li><a href="#s13">Airbnb</a></li>
-  <li><a href="#s14">Check-out & Conta</a></li>
-  <li><a href="#s15">Gorjetas</a></li>
+  <li><a href="#s1">Aluguel de Carro</a></li>
+  <li><a href="#s2">No Balcão</a></li>
+  <li><a href="#s3">Seguro & Extras</a></li>
+  <li><a href="#s4">Dirigindo</a></li>
+  <li><a href="#s5">Gasolina</a></li>
+  <li><a href="#s6">Devolvendo</a></li>
+  <li><a href="#s7">Uber & Lyft</a></li>
+  <li><a href="#s8">Táxi</a></li>
+  <li><a href="#s9">Metrô</a></li>
+  <li><a href="#s10">Ônibus</a></li>
+  <li><a href="#s11">Pedindo Direção</a></li>
+  <li><a href="#s12">Entendendo Direções</a></li>
+  <li><a href="#s13">Problemas</a></li>
+  <li><a href="#s14">Estacionamento</a></li>
+  <li><a href="#s15">Pedágio & Multas</a></li>
 </ul></div></nav>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p><main class="main"><p></p>
-<!-- ███ 1 ███ -->
+<!-- ═══ MAIN ═══ -->
+<main class="main"><!-- ███ 1 ███ -->
 <section class="sc" id="s1">
-  <div class="sc-tag"><span class="n">1</span> Types of Accommodation</div>
-  <h2>Tipos de Hospedagem</h2>
-  <p class="sc-sub">Hotel, hostel, resort, Airbnb — o vocabulário que diferencia cada um.</p>
-  <p class="sc-intro">Antes de reservar, você precisa entender as diferenças entre os tipos de hospedagem no exterior. Os termos são usados em inglês no mundo todo, mas cada um tem nuances que afetam sua experiência — e seu bolso.</p>
-  <div class="vg">
-    <div class="vi"><div class="en">hotel</div><div class="pt">hotel (com recepção, serviço de quarto, etc.)</div></div>
-    <div class="vi"><div class="en">boutique hotel</div><div class="pt">hotel boutique (menor, design único)</div></div>
-    <div class="vi"><div class="en">resort</div><div class="pt">resort (tudo incluso ou com lazer completo)</div></div>
-    <div class="vi"><div class="en">hostel</div><div class="pt">hostel (quartos compartilhados, econômico)</div></div>
-    <div class="vi"><div class="en">bed & breakfast (B&B)</div><div class="pt">pousada com café da manhã</div></div>
-    <div class="vi"><div class="en">vacation rental / Airbnb</div><div class="pt">aluguel de temporada</div></div>
-    <div class="vi"><div class="en">motel</div><div class="pt">motel (à beira de estrada, entrada pelo estacionamento)</div></div>
-    <div class="vi"><div class="en">inn</div><div class="pt">estalagem / pousada</div></div>
-    <div class="vi"><div class="en">all-inclusive</div><div class="pt">tudo incluso (refeições e bebidas no preço)</div></div>
-    <div class="vi"><div class="en">suite / penthouse</div><div class="pt">suíte / cobertura</div></div>
+  <div class="sc-tag"><span class="n">1</span> Car Rental Basics</div>
+  <h2>Aluguel de Carro — Antes de Ir ao Balcão</h2>
+  <p class="sc-sub">Tudo o que você precisa saber antes de pegar as chaves.</p>
+  <p class="sc-intro">Alugar carro no exterior — especialmente nos EUA — é extremamente comum e muitas vezes a opção mais prática. Mas o processo envolve vocabulário específico, seguros, tipos de carro e decisões que você precisa tomar em inglês, sob pressão, no balcão. Vamos preparar você para cada etapa.</p>
+
+  <div class="gr"><div class="gr-t">Reservando online — termos que você vai encontrar</div>
+    <div class="cd"><div class="en">"Pick-up location" / "Drop-off location"</div><div class="pt">Local de retirada / Local de devolução</div></div>
+    <div class="cd"><div class="en">"Pick-up date and time" / "Return date and time"</div><div class="pt">Data e hora de retirada / Data e hora de devolução</div></div>
+    <div class="cd"><div class="en">"One-way rental" / "Round-trip rental"</div><div class="pt">Aluguel só de ida (devolver em outra cidade) / Ida e volta (mesma cidade)</div><div class="nt warn"><strong>One-way rental</strong> geralmente tem uma <strong>taxa extra significativa</strong> (drop-off fee). Verifique antes de reservar.</div></div>
+    <div class="cd"><div class="en">"Full-size" / "Compact" / "Economy" / "SUV" / "Minivan"</div><div class="pt">Tamanho grande / Compacto / Econômico / SUV / Van</div></div>
+    <div class="cd"><div class="en">"Automatic transmission" / "Manual (stick shift)"</div><div class="pt">Câmbio automático / Câmbio manual</div><div class="nt info">Nos EUA, <strong>99% dos carros</strong> são automáticos. Na Europa, o padrão é manual — se quiser automático, reserve com antecedência e espere pagar mais.</div></div>
   </div>
+
+  <div class="vg">
+    <div class="vi"><div class="en">rental agreement / contract</div><div class="pt">contrato de aluguel</div></div>
+    <div class="vi"><div class="en">driver's license</div><div class="pt">carteira de motorista</div></div>
+    <div class="vi"><div class="en">international driving permit (IDP)</div><div class="pt">permissão internacional para dirigir (PID)</div></div>
+    <div class="vi"><div class="en">credit card (required)</div><div class="pt">cartão de crédito (obrigatório)</div></div>
+    <div class="vi"><div class="en">mileage (unlimited / limited)</div><div class="pt">quilometragem (ilimitada / limitada)</div></div>
+    <div class="vi"><div class="en">daily rate</div><div class="pt">diária</div></div>
+  </div>
+
   <div class="bk cultural">
     <h4>Nota Cultural</h4>
-    <p>Nos EUA, <strong>"motel"</strong> não tem a conotação que tem no Brasil. É simplesmente um hotel mais simples à beira de estrada, muito usado em road trips. Já <strong>"inn"</strong> transmite aconchego e charme — pense em pousadas de cidades pequenas na Nova Inglaterra ou Cotswolds. Na Europa, <strong>"pension"</strong> ou <strong>"pensione"</strong> é o equivalente a uma hospedagem familiar econômica.</p>
+    <p>Nos EUA, a idade mínima para alugar é 21 anos na maioria das locadoras, mas motoristas abaixo de 25 pagam uma <strong>"young driver surcharge"</strong> (taxa de motorista jovem). Na Europa, varia por país. Sempre tenha: passaporte, carteira de motorista válida (com a PID se exigida), cartão de crédito no nome do motorista principal, e a confirmação da reserva.</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 2 ███ -->
 <section class="sc" id="s2">
-  <div class="sc-tag"><span class="n">2</span> Booking</div>
-  <h2>Fazendo a Reserva</h2>
-  <p class="sc-sub">Online ou por telefone — os termos e frases que você vai precisar.</p>
-  <div class="gr"><div class="gr-t">O que você vai encontrar nos sites de reserva</div>
-    <div class="cd"><div class="en">"Check-in date" / "Check-out date"</div><div class="pt">Data de entrada / Data de saída</div></div>
-    <div class="cd"><div class="en">"Number of guests" / "Number of rooms"</div><div class="pt">Número de hóspedes / Número de quartos</div></div>
-    <div class="cd"><div class="en">"Room type: single, double, twin, king, queen"</div><div class="pt">Tipo de quarto: solteiro, casal, duas camas, cama king, cama queen</div><div class="nt wine"><strong>Twin</strong> = duas camas de solteiro. <strong>Double</strong> = uma cama de casal. Muitos brasileiros confundem "twin" com "gêmeo" e pedem errado.</div></div>
-    <div class="cd"><div class="en">"Non-refundable rate" / "Free cancellation until [date]"</div><div class="pt">Tarifa não reembolsável / Cancelamento gratuito até [data]</div><div class="nt clay">Tarifas <strong>non-refundable</strong> são mais baratas, mas você perde tudo se cancelar. Na dúvida, pague um pouco mais pela opção com cancelamento flexível.</div></div>
-    <div class="cd"><div class="en">"Breakfast included" / "Room only"</div><div class="pt">Café da manhã incluso / Apenas o quarto</div></div>
+  <div class="sc-tag"><span class="n">2</span> At the Counter</div>
+  <h2>No Balcão da Locadora</h2>
+  <p class="sc-sub">Tudo o que o atendente vai perguntar — e como responder sem ser pego de surpresa.</p>
+
+  <div class="gr"><div class="gr-t">O que o atendente pergunta</div>
+    <div class="cd"><div class="en">"Can I see your driver's license, passport, and credit card?"</div><div class="pt">Posso ver sua carteira, passaporte e cartão de crédito?</div></div>
+    <div class="cd"><div class="en">"Do you have a reservation?"</div><div class="pt">Tem uma reserva?</div></div>
+    <div class="cd"><div class="en">"What time will you be returning the car?"</div><div class="pt">Que horas vai devolver o carro?</div></div>
+    <div class="cd"><div class="en">"Would you like to add an additional driver?"</div><div class="pt">Gostaria de adicionar um motorista adicional?</div><div class="nt info"><strong>Additional driver</strong> = motorista adicional. Nos EUA, quem não está no contrato <strong>não pode dirigir</strong>. Se seu cônjuge vai dirigir também, adicione — geralmente custa $10–15/dia (Avis, Budget, Enterprise e National não cobram pelo cônjuge; na Hertz, a isenção vale para membros do programa de fidelidade).</div></div>
+    <div class="cd"><div class="en">"Would you like to upgrade to a larger vehicle?"</div><div class="pt">Gostaria de fazer upgrade para um veículo maior?</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Reservando por telefone ou e-mail</div>
-    <div class="cd"><div class="en">"I'd like to make a reservation for three nights, checking in on March 15th."</div><div class="pt">Gostaria de fazer uma reserva para três noites, com entrada no dia 15 de março.</div></div>
-    <div class="cd"><div class="en">"Do you have any availability for those dates?"</div><div class="pt">Vocês têm disponibilidade para essas datas?</div></div>
-    <div class="cd"><div class="en">"What's the rate for a double room with breakfast?"</div><div class="pt">Qual é a tarifa para um quarto de casal com café da manhã?</div></div>
-    <div class="cd"><div class="en">"Is there a discount for a longer stay?"</div><div class="pt">Tem desconto para estadias mais longas?</div></div>
-    <div class="cd"><div class="en">"I'd like a room with a view / on a higher floor / away from the elevator."</div><div class="pt">Gostaria de um quarto com vista / em andar alto / longe do elevador.</div></div>
-    <div class="cd"><div class="en">"What's your cancellation policy?"</div><div class="pt">Qual é a política de cancelamento de vocês?</div></div>
-    <div class="cd"><div class="en">"Can I request an early check-in / a late check-out?"</div><div class="pt">Posso solicitar check-in antecipado / check-out tardio?</div></div>
-    <div class="cd"><div class="en">"Do you have accessible rooms for guests with disabilities?"</div><div class="pt">Vocês têm quartos acessíveis para hóspedes com deficiência?</div></div>
+
+  <div class="gr"><div class="gr-t">Seus pedidos e perguntas</div>
+    <div class="cd"><div class="en">"I have a reservation under the name [seu nome]. Here's my confirmation number."</div><div class="pt">Tenho uma reserva no nome [seu nome]. Aqui está meu número de confirmação.</div></div>
+    <div class="cd"><div class="en">"Is the mileage unlimited?"</div><div class="pt">A quilometragem é ilimitada?</div></div>
+    <div class="cd"><div class="en">"Does it come with a full tank of gas?"</div><div class="pt">Vem com o tanque cheio?</div></div>
+    <div class="cd"><div class="en">"Do I need to return it with a full tank?"</div><div class="pt">Preciso devolver com o tanque cheio?</div><div class="nt tip">A resposta quase sempre é <strong>"Yes"</strong>. Se não devolver cheio, a locadora cobra um preço muito mais alto por galão. Sempre abasteça antes de devolver.</div></div>
+    <div class="cd"><div class="en">"Do you have a car with GPS / a built-in navigation system?"</div><div class="pt">Vocês têm carro com GPS / sistema de navegação embutido?</div></div>
+    <div class="cd"><div class="en">"I need a child car seat / booster seat for my kid."</div><div class="pt">Preciso de uma cadeirinha / assento elevado para meu filho.</div></div>
   </div>
-  <div class="bk tip">
-    <h4>Dica de Ouro</h4>
-    <p>Sempre confirme por e-mail após reservar por telefone. E ao chegar, tenha o número de confirmação (<strong>confirmation number</strong> ou <strong>booking reference</strong>) pronto — é a primeira coisa que vão pedir no check-in.</p>
+
+  <div class="dlg">
+    <div class="dlg-h">Diálogo Prático</div>
+    <div class="dlg-ctx">No balcão da Hertz no aeroporto de Miami</div>
+    <div class="ln"><div class="av them">AG</div><div class="bb"><div class="en">Hi! Do you have a reservation?</div><div class="pt">Oi! Tem reserva?</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Yes, under the name Silva. Here's my confirmation and my license.</div><div class="pt">Sim, no nome Silva. Aqui está minha confirmação e minha carteira.</div></div></div>
+    <div class="ln"><div class="av them">AG</div><div class="bb"><div class="en">Perfect. I see you reserved a compact. Would you like to upgrade to a full-size for just $12 more a day?</div><div class="pt">Perfeito. Vejo que reservou um compacto. Gostaria de fazer upgrade para um tamanho grande por apenas $12 a mais por dia?</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">I'll stick with the compact, thanks. But I'd like to add my wife as an additional driver.</div><div class="pt">Vou ficar com o compacto, obrigado. Mas gostaria de adicionar minha esposa como motorista adicional.</div></div></div>
+    <div class="ln"><div class="av them">AG</div><div class="bb"><div class="en">No problem. That's $13 per day. And would you like our insurance coverage?</div><div class="pt">Sem problema. São $13 por dia. E gostaria da nossa cobertura de seguro?</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">I already have coverage through my credit card. Can I decline the insurance?</div><div class="pt">Já tenho cobertura pelo meu cartão de crédito. Posso recusar o seguro?</div></div></div>
+    <div class="ln"><div class="av them">AG</div><div class="bb"><div class="en">Absolutely. Just sign here. Your car is in lot B, space 47. It's a gray Toyota Corolla.</div><div class="pt">Claro. Assine aqui. Seu carro está no estacionamento B, vaga 47. É um Toyota Corolla cinza.</div></div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 3 ███ -->
 <section class="sc" id="s3">
-  <div class="sc-tag"><span class="n">3</span> Check-in</div>
-  <h2>Fazendo o Check-in</h2>
-  <p class="sc-sub">Chegou ao hotel — tudo o que vai acontecer no balcão da recepção.</p>
-  <div class="gr"><div class="gr-t">O que o recepcionista vai dizer e perguntar</div>
-    <div class="cd"><div class="en">"Welcome! Do you have a reservation?"</div><div class="pt">Bem-vindo(a)! Tem uma reserva?</div></div>
-    <div class="cd"><div class="en">"May I have your name and confirmation number?"</div><div class="pt">Posso ter seu nome e número de confirmação?</div></div>
-    <div class="cd"><div class="en">"I'll need a credit card for incidentals."</div><div class="pt">Vou precisar de um cartão de crédito para despesas extras.</div><div class="nt wine"><strong>"Incidentals"</strong> = despesas extras (minibar, room service, estacionamento). O hotel faz um bloqueio temporário no cartão — chamado <strong>"hold"</strong> ou <strong>"pre-authorization"</strong>. Não é cobrança — é liberado no check-out.</div></div>
-    <div class="cd"><div class="en">"Your room is on the 8th floor. Here are your key cards."</div><div class="pt">Seu quarto é no 8º andar. Aqui estão seus cartões-chave.</div></div>
-    <div class="cd"><div class="en">"Breakfast is served from 7 to 10 AM in the restaurant on the ground floor."</div><div class="pt">O café da manhã é servido das 7h às 10h no restaurante do térreo.</div></div>
-    <div class="cd"><div class="en">"Check-out is at 11 AM."</div><div class="pt">O check-out é às 11h.</div></div>
+  <div class="sc-tag"><span class="n">3</span> Insurance & Extras</div>
+  <h2>Seguro, Coberturas e Extras</h2>
+  <p class="sc-sub">Entenda os seguros antes que tentem vender algo que você não precisa.</p>
+  <p class="sc-intro">No balcão, o atendente vai oferecer diversos seguros e extras. Alguns são essenciais, outros são desnecessários se você já tem cobertura pelo cartão de crédito ou seguro viagem. Conheça cada um para tomar a decisão certa.</p>
+
+  <div class="gr"><div class="gr-t">Tipos de seguro que vão oferecer</div>
+    <div class="cd"><div class="en">"CDW — Collision Damage Waiver"</div><div class="pt">Isenção de danos por colisão — cobre danos ao carro alugado.</div></div>
+    <div class="cd"><div class="en">"LDW — Loss Damage Waiver"</div><div class="pt">Isenção de danos e perda — inclui roubo e colisão.</div></div>
+    <div class="cd"><div class="en">"Liability insurance / Third-party coverage"</div><div class="pt">Seguro contra terceiros — cobre danos a outros veículos/pessoas.</div></div>
+    <div class="cd"><div class="en">"Personal Accident Insurance (PAI)"</div><div class="pt">Seguro de acidentes pessoais — cobre despesas médicas do motorista e passageiros.</div></div>
   </div>
-  <div class="gr"><div class="gr-t">O que você pode pedir no check-in</div>
-    <div class="cd"><div class="en">"Is there any chance of an upgrade?"</div><div class="pt">Tem alguma chance de upgrade?</div><div class="nt warm">Perguntar educadamente por upgrade no check-in é perfeitamente aceitável. Funciona melhor em horários de baixa ocupação, fora de temporada, ou se você é membro do programa de fidelidade.</div></div>
-    <div class="cd"><div class="en">"Could I have a room away from the street? I'm a light sleeper."</div><div class="pt">Poderia ser um quarto longe da rua? Tenho sono leve.</div></div>
-    <div class="cd"><div class="en">"We're celebrating our anniversary. Is there anything special you could do?"</div><div class="pt">Estamos comemorando nosso aniversário de casamento. Vocês poderiam fazer algo especial?</div></div>
-    <div class="cd"><div class="en">"Could I get an extra pillow / blanket sent to the room?"</div><div class="pt">Poderia enviar um travesseiro / cobertor extra para o quarto?</div></div>
-    <div class="cd"><div class="en">"Is there a safe in the room?"</div><div class="pt">Tem cofre no quarto?</div></div>
-    <div class="cd"><div class="en">"Where is the ice machine / vending machine?"</div><div class="pt">Onde fica a máquina de gelo / de snacks?</div><div class="nt wine">Nos EUA, hotéis sempre têm <strong>ice machine</strong> no corredor de cada andar — é cultura americana. Basta levar o balde de gelo (<strong>ice bucket</strong>) que está no quarto.</div></div>
-  </div>
-  <div class="dlg">
-    <div class="dlg-h">Diálogo Prático</div>
-    <div class="dlg-ctx">Recepção do hotel — chegando após um voo longo</div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Good evening! Welcome to the Grand Hyatt. Checking in?</div><div class="pt">Boa noite! Bem-vindo ao Grand Hyatt. Fazendo check-in?</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Yes, please. I have a reservation under Silva. Here's my confirmation number.</div><div class="pt">Sim, por favor. Tenho uma reserva no nome Silva. Aqui está meu número de confirmação.</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me pull that up. A king room for four nights, correct? I'll need your ID and a credit card for incidentals.</div><div class="pt">Deixe eu verificar. Quarto king por quatro noites, correto? Vou precisar de um documento e cartão de crédito para despesas extras.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Here you go. By the way, would it be possible to get a room on a higher floor with a city view?</div><div class="pt">Aqui está. A propósito, seria possível um quarto em andar mais alto com vista da cidade?</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me check... I have a room on the 22nd floor with a great view. No extra charge.</div><div class="pt">Deixe eu ver... Tenho um quarto no 22º andar com uma ótima vista. Sem custo adicional.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">That would be perfect. Thank you! One more thing — what time is check-out?</div><div class="pt">Seria perfeito. Obrigado! Mais uma coisa — que horas é o check-out?</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Check-out is at noon. The elevators are to your left. Enjoy your stay!</div><div class="pt">Check-out é ao meio-dia. Os elevadores ficam à sua esquerda. Aproveite a estadia!</div></div></div>
+
+  <div class="gr"><div class="gr-t">Frases essenciais sobre seguro</div>
+    <div class="cd"><div class="en">"I'd like the full coverage, please."</div><div class="pt">Gostaria da cobertura completa, por favor.</div></div>
+    <div class="cd"><div class="en">"My credit card already provides rental car insurance. I'll decline the CDW."</div><div class="pt">Meu cartão de crédito já oferece seguro de carro alugado. Vou recusar o CDW.</div></div>
+    <div class="cd"><div class="en">"What's the deductible on this policy?"</div><div class="pt">Qual é a franquia dessa cobertura?</div><div class="nt info"><strong>Deductible</strong> = franquia (valor que você paga do bolso antes do seguro cobrir). Quanto menor a franquia, mais caro o seguro — mas mais proteção.</div></div>
+    <div class="cd"><div class="en">"What happens if the car gets a scratch or a dent?"</div><div class="pt">O que acontece se o carro tiver um arranhão ou amassado?</div></div>
+    <div class="cd"><div class="en">"I need a toll pass / E-ZPass / SunPass. How much is it?"</div><div class="pt">Preciso de um dispositivo de pedágio. Quanto custa?</div><div class="nt warn">Nos EUA, muitos pedágios são eletrônicos — sem cabine. Se não tiver o dispositivo, a locadora cobra automaticamente com taxas administrativas altíssimas.</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 4 ███ -->
 <section class="sc" id="s4">
-  <div class="sc-tag"><span class="n">4</span> The Room</div>
-  <h2>O Quarto — Vocabulário Essencial</h2>
-  <p class="sc-sub">Tudo que está dentro do quarto e como pedir o que falta.</p>
-  <div class="vg">
-    <div class="vi"><div class="en">king bed / queen bed</div><div class="pt">cama king / queen</div></div>
-    <div class="vi"><div class="en">twin beds</div><div class="pt">duas camas de solteiro</div></div>
-    <div class="vi"><div class="en">pillows / extra pillows</div><div class="pt">travesseiros / extras</div></div>
-    <div class="vi"><div class="en">blanket / comforter / duvet</div><div class="pt">cobertor / edredom</div></div>
-    <div class="vi"><div class="en">sheets / towels</div><div class="pt">lençóis / toalhas</div></div>
-    <div class="vi"><div class="en">bathrobe / slippers</div><div class="pt">roupão / chinelos</div></div>
-    <div class="vi"><div class="en">minibar / fridge</div><div class="pt">frigobar / geladeira</div></div>
-    <div class="vi"><div class="en">safe / room safe</div><div class="pt">cofre do quarto</div></div>
-    <div class="vi"><div class="en">iron / ironing board</div><div class="pt">ferro de passar / tábua</div></div>
-    <div class="vi"><div class="en">hair dryer</div><div class="pt">secador de cabelo</div></div>
-    <div class="vi"><div class="en">outlet / power socket</div><div class="pt">tomada</div></div>
-    <div class="vi"><div class="en">thermostat / AC controls</div><div class="pt">termostato / controle do ar</div></div>
-    <div class="vi"><div class="en">blackout curtains</div><div class="pt">cortinas blackout</div></div>
-    <div class="vi"><div class="en">do not disturb sign</div><div class="pt">placa de "não perturbe"</div></div>
-    <div class="vi"><div class="en">key card</div><div class="pt">cartão-chave</div></div>
-    <div class="vi"><div class="en">balcony / terrace</div><div class="pt">sacada / terraço</div></div>
+  <div class="sc-tag"><span class="n">4</span> On the Road</div>
+  <h2>Dirigindo no Exterior</h2>
+  <p class="sc-sub">Regras, placas e situações que são diferentes do Brasil.</p>
+
+  <div class="gr"><div class="gr-t">Diferenças importantes nos EUA</div>
+    <div class="cd"><div class="en">"Right turn on red"</div><div class="pt">Conversão à direita no sinal vermelho (permitido na maioria dos estados, a menos que haja placa dizendo "No turn on red").</div></div>
+    <div class="cd"><div class="en">"Four-way stop / All-way stop"</div><div class="pt">Cruzamento com parada obrigatória para todos. Quem chegou primeiro, passa primeiro.</div></div>
+    <div class="cd"><div class="en">"School zone — 15 mph when lights are flashing"</div><div class="pt">Zona escolar — 24 km/h quando as luzes estiverem piscando.</div><div class="nt warn"><strong>Multas em school zones são gravíssimas.</strong> Reduza SEMPRE quando vir luzes amarelas piscando.</div></div>
+    <div class="cd"><div class="en">"Speed limit 65 mph"</div><div class="pt">Limite de velocidade 105 km/h. (1 mph = 1,6 km/h)</div></div>
+    <div class="cd"><div class="en">"Carpool lane / HOV lane (High Occupancy Vehicle)"</div><div class="pt">Faixa exclusiva para veículos com 2+ ocupantes, contando o motorista (em algumas vias, 3+).</div></div>
+    <div class="cd"><div class="en">"Do not pass" / "No passing zone"</div><div class="pt">Proibido ultrapassar.</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Pedindo o que falta</div>
-    <div class="cd"><div class="en">"Could you send extra towels to room 814, please?"</div><div class="pt">Poderia enviar toalhas extras para o quarto 814, por favor?</div></div>
-    <div class="cd"><div class="en">"I need a power adapter. Do you have one I can borrow?"</div><div class="pt">Preciso de um adaptador de tomada. Vocês têm um que eu possa usar?</div></div>
-    <div class="cd"><div class="en">"Is there a crib available? I'm traveling with a baby."</div><div class="pt">Tem berço disponível? Estou viajando com um bebê.</div></div>
-    <div class="cd"><div class="en">"Could I get a rollaway bed / an extra bed in the room?"</div><div class="pt">Poderia colocar uma cama extra no quarto?</div></div>
-    <div class="cd"><div class="en">"How do I use the safe? I can't seem to set the code."</div><div class="pt">Como uso o cofre? Não estou conseguindo configurar o código.</div></div>
+
+  <div class="gr"><div class="gr-t">Placas que você precisa reconhecer</div></div>
+  <div class="vg">
+    <div class="vi"><div class="en">YIELD</div><div class="pt">Dê a preferência</div></div>
+    <div class="vi"><div class="en">MERGE</div><div class="pt">Confluência (entre na faixa)</div></div>
+    <div class="vi"><div class="en">DETOUR</div><div class="pt">Desvio</div></div>
+    <div class="vi"><div class="en">EXIT ONLY</div><div class="pt">Faixa só de saída</div></div>
+    <div class="vi"><div class="en">WRONG WAY / DO NOT ENTER</div><div class="pt">Contramão / Não entre</div></div>
+    <div class="vi"><div class="en">ROAD WORK AHEAD</div><div class="pt">Obras na pista adiante</div></div>
+    <div class="vi"><div class="en">KEEP RIGHT / KEEP LEFT</div><div class="pt">Mantenha-se à direita / esquerda</div></div>
+    <div class="vi"><div class="en">NO U-TURN</div><div class="pt">Proibido retorno</div></div>
+  </div>
+
+  <div class="bk warn">
+    <h4>Atenção — Reino Unido, Austrália e Japão</h4>
+    <p>Nestes países, <strong>dirige-se pela esquerda</strong>. O volante fica do lado direito do carro. As rotatórias giram no sentido horário. Se for alugar carro nessas regiões, pratique mentalmente antes. A frase que vai te salvar: <strong>"Keep left, look right"</strong> (Mantenha-se à esquerda, olhe à direita).</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 5 ███ -->
 <section class="sc" id="s5">
-  <div class="sc-tag"><span class="n">5</span> Requests & Services</div>
-  <h2>Pedidos e Serviços do Hotel</h2>
-  <p class="sc-sub">Room service, lavanderia, concierge e tudo o que o hotel pode fazer por você.</p>
-  <div class="gr"><div class="gr-t">Room service</div>
-    <div class="cd"><div class="en">"I'd like to order room service. Can I see the menu?"</div><div class="pt">Gostaria de pedir room service. Posso ver o cardápio?</div></div>
-    <div class="cd"><div class="en">"I'd like a club sandwich and a bottle of still water, please."</div><div class="pt">Gostaria de um sanduíche club e uma garrafa de água sem gás, por favor.</div><div class="nt wine"><strong>Still water</strong> = sem gás. <strong>Sparkling water</strong> = com gás. Nos EUA, "water" sem especificar = água da torneira com gelo.</div></div>
-    <div class="cd"><div class="en">"How long will it take?" / "Can you deliver it in about 30 minutes?"</div><div class="pt">Quanto tempo vai levar? / Podem entregar em uns 30 minutos?</div></div>
-    <div class="cd"><div class="en">"Please charge it to my room."</div><div class="pt">Por favor, coloque na conta do quarto.</div></div>
+  <div class="sc-tag"><span class="n">5</span> Gas Station</div>
+  <h2>No Posto de Gasolina</h2>
+  <p class="sc-sub">Abastecer nos EUA é self-service — e funciona diferente do Brasil.</p>
+
+  <div class="gr"><div class="gr-t">Frases essenciais</div>
+    <div class="cd"><div class="en">"Where is the nearest gas station?"</div><div class="pt">Onde fica o posto de gasolina mais próximo?</div><div class="nt info"><strong>Gas station</strong> = posto de gasolina. Nunca diga "fuel station" — ninguém fala assim.</div></div>
+    <div class="cd"><div class="en">"Regular, plus, or premium?" → "Regular, please."</div><div class="pt">"Comum, intermediária ou premium?" → "Comum, por favor."</div></div>
+    <div class="cd"><div class="en">"I'd like to fill it up."</div><div class="pt">Quero encher o tanque.</div></div>
+    <div class="cd"><div class="en">"Can I pay at the pump?" / "Do I need to pay inside first?"</div><div class="pt">Posso pagar na bomba? / Preciso pagar lá dentro primeiro?</div><div class="nt tip">Nos EUA, a maioria das bombas aceita cartão direto. Se usar cartão estrangeiro e ele não funcionar, entre na loja e diga: <strong>"I'd like to prepay $40 on pump number 5."</strong> (Quero pagar antecipado $40 na bomba 5.)</div></div>
+    <div class="cd"><div class="en">"The pump isn't working. Can you check it?"</div><div class="pt">A bomba não está funcionando. Pode verificar?</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Lavanderia e outros serviços</div>
-    <div class="cd"><div class="en">"Do you have a laundry service? How long does it take?"</div><div class="pt">Vocês têm serviço de lavanderia? Quanto tempo demora?</div></div>
-    <div class="cd"><div class="en">"I need these clothes dry-cleaned by tomorrow morning."</div><div class="pt">Preciso dessas roupas lavadas a seco até amanhã de manhã.</div></div>
-    <div class="cd"><div class="en">"Is there a self-service laundry room in the hotel?"</div><div class="pt">Tem lavanderia self-service no hotel?</div></div>
-    <div class="cd"><div class="en">"Could you arrange a taxi / airport transfer for tomorrow at 6 AM?"</div><div class="pt">Poderia providenciar um táxi / transfer para o aeroporto amanhã às 6h?</div></div>
-    <div class="cd"><div class="en">"I'd like a wake-up call at 6:30 AM, please."</div><div class="pt">Gostaria de uma ligação para acordar às 6h30, por favor.</div></div>
-    <div class="cd"><div class="en">"Can I leave my luggage at the front desk after check-out?"</div><div class="pt">Posso deixar minha bagagem na recepção após o check-out?</div></div>
-    <div class="cd"><div class="en">"Is there a bellhop who can help with my bags?"</div><div class="pt">Tem um carregador que pode ajudar com minhas malas?</div><div class="nt taupe"><strong>Bellhop</strong> (EUA) ou <strong>porter</strong> (UK) = carregador de malas do hotel. Gorjeta esperada: $1–2 por mala.</div></div>
-  </div>
-  <div class="gr"><div class="gr-t">Concierge — pedidos especiais</div>
-    <div class="cd"><div class="en">"Can the concierge recommend a good restaurant nearby?"</div><div class="pt">O concierge pode recomendar um bom restaurante por perto?</div></div>
-    <div class="cd"><div class="en">"Could you help me book tickets for a show / a tour / a museum?"</div><div class="pt">Poderia me ajudar a reservar ingressos para um show / um tour / um museu?</div></div>
-    <div class="cd"><div class="en">"I need directions to [place]. Can you print a map for me?"</div><div class="pt">Preciso de direções para [lugar]. Pode imprimir um mapa para mim?</div></div>
+
+  <div class="vg">
+    <div class="vi"><div class="en">unleaded / regular</div><div class="pt">gasolina comum</div></div>
+    <div class="vi"><div class="en">diesel</div><div class="pt">diesel</div></div>
+    <div class="vi"><div class="en">gallon (≈ 3.78 liters)</div><div class="pt">galão</div></div>
+    <div class="vi"><div class="en">nozzle</div><div class="pt">bico da bomba</div></div>
+    <div class="vi"><div class="en">fuel gauge</div><div class="pt">indicador de combustível</div></div>
+    <div class="vi"><div class="en">flat tire / spare tire</div><div class="pt">pneu furado / estepe</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 6 ███ -->
 <section class="sc" id="s6">
-  <div class="sc-tag"><span class="n">6</span> Breakfast</div>
-  <h2>Café da Manhã no Hotel</h2>
-  <p class="sc-sub">Buffet, continental, à la carte — e as frases que você vai usar na mesa.</p>
-  <div class="gr"><div class="gr-t">Tipos de café da manhã</div>
-    <div class="cd"><div class="en">"Continental breakfast"</div><div class="pt">Café continental — mais leve: pães, croissants, café, suco, frutas.</div></div>
-    <div class="cd"><div class="en">"Full breakfast / American breakfast"</div><div class="pt">Café completo — com ovos, bacon, panquecas, etc.</div></div>
-    <div class="cd"><div class="en">"English breakfast / Full English"</div><div class="pt">Café inglês completo — ovos, bacon, feijão, salsicha, torrada, tomate.</div></div>
-    <div class="cd"><div class="en">"Buffet breakfast"</div><div class="pt">Café em estilo buffet — você se serve.</div></div>
+  <div class="sc-tag"><span class="n">6</span> Return</div>
+  <h2>Devolvendo o Carro</h2>
+  <p class="sc-sub">Evitando cobranças surpresa e resolvendo problemas na devolução.</p>
+
+  <div class="gr"><div class="gr-t">Frases da devolução</div>
+    <div class="cd"><div class="en">"Where is the car return / drop-off area?"</div><div class="pt">Onde fica a área de devolução de carros?</div></div>
+    <div class="cd"><div class="en">"I filled up the tank before returning. Here's the receipt from the gas station."</div><div class="pt">Enchi o tanque antes de devolver. Aqui está o recibo do posto.</div><div class="nt tip">Guarde <strong>sempre</strong> o recibo do último abastecimento. Se a locadora disser que o tanque não está cheio, o recibo é sua prova.</div></div>
+    <div class="cd"><div class="en">"I'm returning it a day early. Will I get a refund for the unused day?"</div><div class="pt">Estou devolvendo um dia antes. Vou receber reembolso pelo dia não usado?</div></div>
+    <div class="cd"><div class="en">"I noticed a small scratch on the bumper when I picked it up. I reported it before leaving."</div><div class="pt">Notei um pequeno arranhão no para-choque quando peguei. Reportei antes de sair.</div></div>
+    <div class="cd"><div class="en">"I need to return the car at a different location. Is there a drop-off fee?"</div><div class="pt">Preciso devolver em outro local. Tem taxa de devolução?</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Frases no café da manhã</div>
-    <div class="cd"><div class="en">"Is breakfast included in the room rate?"</div><div class="pt">O café da manhã está incluso na diária?</div></div>
-    <div class="cd"><div class="en">"What time does breakfast end?"</div><div class="pt">Que horas o café da manhã encerra?</div></div>
-    <div class="cd"><div class="en">"How would you like your eggs? — Scrambled, please."</div><div class="pt">Como gostaria dos seus ovos? — Mexidos, por favor.</div></div>
-    <div class="cd"><div class="en">"Could I have a coffee with milk, no sugar?"</div><div class="pt">Poderia trazer um café com leite, sem açúcar?</div></div>
-    <div class="cd"><div class="en">"Do you have any gluten-free / dairy-free options?"</div><div class="pt">Vocês têm opções sem glúten / sem lactose?</div></div>
-  </div>
-  <div class="vg">
-    <div class="vi"><div class="en">scrambled eggs</div><div class="pt">ovos mexidos</div></div>
-    <div class="vi"><div class="en">fried eggs (sunny side up)</div><div class="pt">ovo frito (gema para cima)</div></div>
-    <div class="vi"><div class="en">poached eggs</div><div class="pt">ovos pochê</div></div>
-    <div class="vi"><div class="en">hard-boiled / soft-boiled</div><div class="pt">cozido duro / cozido mole</div></div>
-    <div class="vi"><div class="en">omelet</div><div class="pt">omelete</div></div>
-    <div class="vi"><div class="en">pancakes / waffles / French toast</div><div class="pt">panquecas / waffles / rabanada</div></div>
-    <div class="vi"><div class="en">toast / bagel / croissant</div><div class="pt">torrada / bagel / croissant</div></div>
-    <div class="vi"><div class="en">cereal / oatmeal / granola</div><div class="pt">cereal / aveia / granola</div></div>
+
+  <div class="bk tip">
+    <h4>Dica de Ouro</h4>
+    <p>Ao pegar o carro, <strong>tire fotos e vídeos de todos os ângulos</strong> — especialmente arranhões, amassados e marcas existentes. Isso evita que cobrem por danos pré-existentes. Faça o mesmo ao devolver. Se houver um funcionário inspecionando, peça: <strong>"Could I get a copy of the inspection report?"</strong> (Posso ter uma cópia do relatório de inspeção?)</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
+<!-- ═══ TRANSIT BANNER ═══ -->
+<div class="transit-banner"><div class="tc"><h3>Transporte Urbano — <em>Sem Carro</em></h3>
+<p>As próximas seções cobrem Uber, táxi, metrô, ônibus e como se orientar a pé nas cidades.</p></div></div>
 <!-- ███ 7 ███ -->
 <section class="sc" id="s7">
-  <div class="sc-tag"><span class="n">7</span> Restaurant & Bar</div>
-  <h2>Restaurante e Bar do Hotel</h2>
-  <p class="sc-sub">Cobrando no quarto, pedindo no bar e entendendo a conta.</p>
-  <div class="gr"><div class="gr-t">Frases no restaurante do hotel</div>
-    <div class="cd"><div class="en">"I'd like a table for two, please. We're hotel guests."</div><div class="pt">Gostaria de uma mesa para dois, por favor. Somos hóspedes do hotel.</div></div>
-    <div class="cd"><div class="en">"Can I charge this to my room?" / "Room 814, please."</div><div class="pt">Posso colocar na conta do quarto? / Quarto 814, por favor.</div></div>
-    <div class="cd"><div class="en">"Is there a dress code for the restaurant?"</div><div class="pt">Tem código de vestimenta para o restaurante?</div></div>
-    <div class="cd"><div class="en">"Do we need a reservation for dinner?"</div><div class="pt">Precisamos de reserva para o jantar?</div></div>
+  <div class="sc-tag"><span class="n">7</span> Rideshare</div>
+  <h2>Uber e Lyft</h2>
+  <p class="sc-sub">Muito além de apenas chamar o carro — comunicação com o motorista, problemas e gorjeta.</p>
+
+  <div class="gr"><div class="gr-t">Comunicando-se com o motorista</div>
+    <div class="cd"><div class="en">"Hi, are you [driver's name]? I'm your rider."</div><div class="pt">Oi, você é o [nome]? Sou seu passageiro.</div></div>
+    <div class="cd"><div class="en">"I'm at the main entrance. I'm wearing a blue jacket."</div><div class="pt">Estou na entrada principal. Estou com jaqueta azul.</div></div>
+    <div class="cd"><div class="en">"Could you pop the trunk, please? I have luggage."</div><div class="pt">Pode abrir o porta-malas, por favor? Tenho bagagem.</div><div class="nt info"><strong>Trunk</strong> = porta-malas.</div></div>
+    <div class="cd"><div class="en">"Can you drop me off at the corner, please? I'll walk from there."</div><div class="pt">Pode me deixar na esquina, por favor? Eu ando dali.</div></div>
+    <div class="cd"><div class="en">"Actually, there's been a change of plans. Can we go to [new address] instead?"</div><div class="pt">Na verdade, houve mudança de planos. Podemos ir para [novo endereço]?</div></div>
+    <div class="cd"><div class="en">"Could you turn on the AC / turn down the music, please?"</div><div class="pt">Poderia ligar o ar-condicionado / abaixar a música, por favor?</div></div>
+    <div class="cd"><div class="en">"How long do you think it'll take to get there?"</div><div class="pt">Quanto tempo acha que leva para chegar?</div></div>
   </div>
-  <div class="gr"><div class="gr-t">No bar do hotel</div>
-    <div class="cd"><div class="en">"Can I see the drinks menu?"</div><div class="pt">Posso ver o cardápio de bebidas?</div></div>
-    <div class="cd"><div class="en">"I'll have a glass of red wine / a gin and tonic / a sparkling water."</div><div class="pt">Quero uma taça de vinho tinto / um gin tônica / uma água com gás.</div></div>
-    <div class="cd"><div class="en">"Can I open a tab and close it later?" / "Put it on my room, please."</div><div class="pt">Posso abrir uma conta e fechar depois? / Coloque no meu quarto, por favor.</div><div class="nt wine"><strong>"Open a tab"</strong> = abrir uma conta corrente no bar (você paga tudo no final). Muito comum nos EUA. Geralmente pedem seu cartão ou número do quarto.</div></div>
-    <div class="cd"><div class="en">"Is there happy hour? What time does it start?"</div><div class="pt">Tem happy hour? A que horas começa?</div></div>
+
+  <div class="gr"><div class="gr-t">Problemas comuns</div>
+    <div class="cd"><div class="en">"The app says you're here, but I can't see the car."</div><div class="pt">O app diz que você está aqui, mas não estou vendo o carro.</div></div>
+    <div class="cd"><div class="en">"I think the driver went to the wrong pick-up point."</div><div class="pt">Acho que o motorista foi para o ponto de embarque errado.</div></div>
+    <div class="cd"><div class="en">"I left my phone / bag in the car. How do I contact the driver?"</div><div class="pt">Esqueci meu celular / bolsa no carro. Como entro em contato com o motorista?</div></div>
+    <div class="cd"><div class="en">"I was charged a cancellation fee, but the driver never showed up."</div><div class="pt">Fui cobrado taxa de cancelamento, mas o motorista nunca apareceu.</div></div>
+    <div class="cd"><div class="en">"The driver took a longer route. I'd like to dispute the fare."</div><div class="pt">O motorista fez um caminho mais longo. Gostaria de contestar a tarifa.</div></div>
+  </div>
+
+  <div class="bk cultural">
+    <h4>Nota Cultural — Gorjeta no Uber/Lyft</h4>
+    <p>Nos EUA, é esperado dar gorjeta ao motorista de Uber e Lyft — geralmente <strong>15–20%</strong> ou $2–5 para corridas curtas. Você pode dar pelo app ou em dinheiro. Dizer <strong>"Keep the change"</strong> (Fique com o troco) funciona se pagar em dinheiro. No Reino Unido e na Europa, gorjeta em rideshare é menos esperada, mas apreciada.</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 8 ███ -->
 <section class="sc" id="s8">
-  <div class="sc-tag"><span class="n">8</span> Pool, Spa & Gym</div>
-  <h2>Piscina, Spa e Academia</h2>
-  <p class="sc-sub">As perguntas certas para aproveitar a estrutura do hotel.</p>
-  <div class="gr"><div class="gr-t">Frases essenciais</div>
-    <div class="cd"><div class="en">"What are the pool hours?"</div><div class="pt">Qual é o horário da piscina?</div></div>
-    <div class="cd"><div class="en">"Are towels provided at the pool?"</div><div class="pt">As toalhas são fornecidas na piscina?</div></div>
-    <div class="cd"><div class="en">"Is the gym open 24 hours?"</div><div class="pt">A academia funciona 24 horas?</div></div>
-    <div class="cd"><div class="en">"I'd like to book a spa treatment / a massage. What's available?"</div><div class="pt">Gostaria de reservar um tratamento no spa / uma massagem. O que têm disponível?</div></div>
-    <div class="cd"><div class="en">"Is the spa included in the room rate or is it an additional charge?"</div><div class="pt">O spa está incluso na diária ou é cobrança adicional?</div></div>
-    <div class="cd"><div class="en">"Can I reserve a cabana / a lounge chair by the pool?"</div><div class="pt">Posso reservar uma cabana / uma espreguiçadeira na piscina?</div></div>
+  <div class="sc-tag"><span class="n">8</span> Taxi</div>
+  <h2>Táxi</h2>
+  <p class="sc-sub">Parando na rua, combinando preço e lidando com taxímetro.</p>
+
+  <div class="gr"><div class="gr-t">Pegando o táxi</div>
+    <div class="cd"><div class="en">"Taxi!" / "Can you take me to [address / place]?"</div><div class="pt">Táxi! / Pode me levar para [endereço / lugar]?</div></div>
+    <div class="cd"><div class="en">"How much to go to downtown / the airport / this address?"</div><div class="pt">Quanto custa ir para o centro / o aeroporto / esse endereço?</div></div>
+    <div class="cd"><div class="en">"Is the meter running?" / "Can you turn on the meter, please?"</div><div class="pt">O taxímetro está ligado? / Pode ligar o taxímetro, por favor?</div><div class="nt warn">Em alguns países, motoristas tentam cobrar "preço fixo" sem taxímetro — geralmente bem mais caro. <strong>Sempre peça para ligar o meter</strong>, exceto onde o preço fixo é oficial (ex: táxis do aeroporto JFK para Manhattan).</div></div>
+    <div class="cd"><div class="en">"Could you take the highway / avoid tolls / take the fastest route?"</div><div class="pt">Poderia pegar a rodovia / evitar pedágios / ir pelo caminho mais rápido?</div></div>
+    <div class="cd"><div class="en">"Can you stop here, please? / Pull over right here."</div><div class="pt">Pode parar aqui, por favor? / Encoste aqui.</div></div>
+  </div>
+
+  <div class="gr"><div class="gr-t">Pagando e saindo</div>
+    <div class="cd"><div class="en">"Do you take credit cards or just cash?"</div><div class="pt">Aceita cartão ou só dinheiro?</div></div>
+    <div class="cd"><div class="en">"Here's $30. Keep the change."</div><div class="pt">Aqui estão $30. Fique com o troco.</div></div>
+    <div class="cd"><div class="en">"Could I get a receipt, please?"</div><div class="pt">Poderia me dar um recibo, por favor?</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 9 ███ -->
 <section class="sc" id="s9">
-  <div class="sc-tag"><span class="n">9</span> Wi-Fi & Business</div>
-  <h2>Wi-Fi, Impressão e Business Center</h2>
-  <p class="sc-sub">Conexão, trabalho remoto e serviços que o viajante moderno precisa.</p>
-  <div class="gr"><div class="gr-t">Frases essenciais</div>
-    <div class="cd"><div class="en">"What's the Wi-Fi password?"</div><div class="pt">Qual é a senha do Wi-Fi?</div></div>
-    <div class="cd"><div class="en">"Is the Wi-Fi free or is there a charge?"</div><div class="pt">O Wi-Fi é gratuito ou tem cobrança?</div></div>
-    <div class="cd"><div class="en">"The Wi-Fi in my room is really slow. Is there a way to get a better connection?"</div><div class="pt">O Wi-Fi no meu quarto está muito lento. Tem como melhorar a conexão?</div></div>
-    <div class="cd"><div class="en">"Do you have a business center where I can print documents?"</div><div class="pt">Vocês têm um business center onde posso imprimir documentos?</div></div>
-    <div class="cd"><div class="en">"Is there a meeting room I can use for a video call?"</div><div class="pt">Tem uma sala de reuniões que eu possa usar para uma videochamada?</div></div>
+  <div class="sc-tag"><span class="n">9</span> Subway / Metro</div>
+  <h2>Metrô e Trem Urbano</h2>
+  <p class="sc-sub">NYC Subway, London Underground, Paris Métro — cada cidade tem suas regras.</p>
+
+  <div class="gr"><div class="gr-t">Comprando passagem</div>
+    <div class="cd"><div class="en">"Where can I buy a metro card / ticket?"</div><div class="pt">Onde posso comprar um cartão / bilhete de metrô?</div></div>
+    <div class="cd"><div class="en">"How much is a single ride / a day pass / a weekly pass?"</div><div class="pt">Quanto custa uma viagem avulsa / passe diário / passe semanal?</div><div class="nt tip"><strong>Single ride</strong> = viagem avulsa. <strong>Day pass</strong> = passe ilimitado por um dia. Se for usar bastante, o passe diário quase sempre compensa.</div></div>
+    <div class="cd"><div class="en">"Can I use contactless / Apple Pay to get in?"</div><div class="pt">Posso usar pagamento por aproximação / Apple Pay para entrar?</div></div>
+    <div class="cd"><div class="en">"Do I need to tap in and tap out, or just tap once?"</div><div class="pt">Preciso passar o cartão na entrada e na saída, ou só uma vez?</div><div class="nt info">Em Londres e Sydney, você precisa <strong>tap in e tap out</strong> (marcar entrada e saída). Em Nova York, apenas na entrada. Se esquecer de fazer tap out em Londres, paga a tarifa máxima.</div></div>
+  </div>
+
+  <div class="gr"><div class="gr-t">Navegando dentro do metrô</div>
+    <div class="cd"><div class="en">"Which line goes to [destination]?"</div><div class="pt">Qual linha vai para [destino]?</div></div>
+    <div class="cd"><div class="en">"Is this the right platform for the train going uptown / downtown?"</div><div class="pt">Essa é a plataforma certa para o trem indo ao norte / ao sul da cidade?</div><div class="nt neutral">Em Nova York, <strong>Uptown</strong> = norte (Bronx, Harlem). <strong>Downtown</strong> = sul (Lower Manhattan, Brooklyn). Na maioria das cidades, as linhas são identificadas por cores ou letras/números.</div></div>
+    <div class="cd"><div class="en">"Do I need to transfer / change lines?"</div><div class="pt">Preciso fazer baldeação / trocar de linha?</div></div>
+    <div class="cd"><div class="en">"How many stops until [destination]?"</div><div class="pt">Quantas estações até [destino]?</div></div>
+    <div class="cd"><div class="en">"Excuse me, is this seat taken?"</div><div class="pt">Com licença, esse assento está ocupado?</div></div>
+    <div class="cd"><div class="en">"Which exit should I take for [street / attraction]?"</div><div class="pt">Qual saída devo pegar para [rua / atração]?</div></div>
+  </div>
+
+  <div class="vg">
+    <div class="vi"><div class="en">platform</div><div class="pt">plataforma</div></div>
+    <div class="vi"><div class="en">track</div><div class="pt">trilho / via</div></div>
+    <div class="vi"><div class="en">transfer / connection</div><div class="pt">baldeação / conexão</div></div>
+    <div class="vi"><div class="en">next stop</div><div class="pt">próxima estação</div></div>
+    <div class="vi"><div class="en">end of the line / last stop</div><div class="pt">final da linha / última estação</div></div>
+    <div class="vi"><div class="en">fare / ticket</div><div class="pt">tarifa / bilhete</div></div>
+    <div class="vi"><div class="en">turnstile / gate</div><div class="pt">catraca / portão</div></div>
+    <div class="vi"><div class="en">rush hour / peak time</div><div class="pt">horário de pico</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 10 ███ -->
 <section class="sc" id="s10">
-  <div class="sc-tag"><span class="n">10</span> Room Problems</div>
-  <h2>Problemas no Quarto</h2>
-  <p class="sc-sub">Ar-condicionado quebrado, barulho, chuveiro frio — como resolver tudo por telefone ou na recepção.</p>
-  <div class="gr"><div class="gr-t">Problemas com o quarto</div>
-    <div class="cd"><div class="en">"The air conditioning / heating isn't working."</div><div class="pt">O ar-condicionado / aquecimento não está funcionando.</div></div>
-    <div class="cd"><div class="en">"There's no hot water in the shower."</div><div class="pt">Não tem água quente no chuveiro.</div></div>
-    <div class="cd"><div class="en">"The toilet is clogged." / "The sink is leaking."</div><div class="pt">O vaso sanitário está entupido. / A pia está vazando.</div></div>
-    <div class="cd"><div class="en">"The TV remote / the lights / the safe isn't working."</div><div class="pt">O controle da TV / as luzes / o cofre não está funcionando.</div></div>
-    <div class="cd"><div class="en">"My key card stopped working. Can I get a new one?"</div><div class="pt">Meu cartão-chave parou de funcionar. Posso pegar um novo?</div></div>
-    <div class="cd"><div class="en">"The room hasn't been cleaned today."</div><div class="pt">O quarto não foi limpo hoje.</div></div>
-    <div class="cd"><div class="en">"There's a strange smell in the room."</div><div class="pt">Tem um cheiro estranho no quarto.</div></div>
-    <div class="cd"><div class="en">"I found a stain on the sheets / the towels aren't clean."</div><div class="pt">Encontrei uma mancha nos lençóis / as toalhas não estão limpas.</div></div>
+  <div class="sc-tag"><span class="n">10</span> Bus</div>
+  <h2>Ônibus Urbano</h2>
+  <p class="sc-sub">Mais barato que táxi, mais flexível que metrô — se você souber usar.</p>
+
+  <div class="gr"><div class="gr-t">Frases essenciais</div>
+    <div class="cd"><div class="en">"Does this bus go to [destination]?"</div><div class="pt">Esse ônibus vai para [destino]?</div></div>
+    <div class="cd"><div class="en">"Which bus should I take to get to [place]?"</div><div class="pt">Qual ônibus devo pegar para ir a [lugar]?</div></div>
+    <div class="cd"><div class="en">"Where is the nearest bus stop?"</div><div class="pt">Onde fica o ponto de ônibus mais próximo?</div></div>
+    <div class="cd"><div class="en">"How often does the bus come? / What's the schedule?"</div><div class="pt">De quanto em quanto tempo passa o ônibus? / Qual é o horário?</div></div>
+    <div class="cd"><div class="en">"Do I need exact change?"</div><div class="pt">Preciso de troco exato?</div><div class="nt warn">Em muitas cidades americanas, ônibus <strong>não dão troco</strong>. Você precisa ter o valor exato em moedas ou um passe. Em Londres e muitas cidades europeias, ônibus só aceitam cartão — não aceitam dinheiro.</div></div>
+    <div class="cd"><div class="en">"Could you tell me when we get to [stop]? I'm not familiar with the route."</div><div class="pt">Poderia me avisar quando chegarmos em [parada]? Não conheço a rota.</div></div>
+    <div class="cd"><div class="en">"Excuse me, I'd like to get off at the next stop."</div><div class="pt">Com licença, gostaria de descer na próxima parada.</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Barulho</div>
-    <div class="cd"><div class="en">"The room next door is very noisy. Could you call them or move me to a different room?"</div><div class="pt">O quarto ao lado está muito barulhento. Poderiam ligar para eles ou me mudar de quarto?</div></div>
-    <div class="cd"><div class="en">"I can hear the traffic / the elevator / construction from my room. Is there a quieter room available?"</div><div class="pt">Estou ouvindo o trânsito / o elevador / uma obra do meu quarto. Tem um quarto mais silencioso disponível?</div></div>
-  </div>
-  <div class="dlg">
-    <div class="dlg-h">Diálogo Prático</div>
-    <div class="dlg-ctx">Ligando para a recepção do quarto — problema com o ar-condicionado</div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Front desk, how can I help you?</div><div class="pt">Recepção, como posso ajudar?</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Hi, this is room 814. The air conditioning stopped working and the room is getting really warm.</div><div class="pt">Oi, aqui é o quarto 814. O ar-condicionado parou de funcionar e o quarto está ficando muito quente.</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">I'm sorry about that. I'll send maintenance right away. It should be about 15 minutes.</div><div class="pt">Sinto muito. Vou enviar a manutenção imediatamente. Deve levar uns 15 minutos.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">If they can't fix it tonight, could I be moved to another room?</div><div class="pt">Se não conseguirem consertar hoje à noite, eu poderia ser transferido para outro quarto?</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Absolutely. If it can't be resolved, we'll move you to an equivalent room right away.</div><div class="pt">Com certeza. Se não for resolvido, transferimos você para um quarto equivalente imediatamente.</div></div></div>
+
+  <div class="bk cultural">
+    <h4>Nota Cultural — Ônibus nos EUA vs. Europa</h4>
+    <p>Nos EUA, ônibus urbanos funcionam bem em grandes cidades (NYC, Chicago, San Francisco), mas são limitados em cidades menores. Na Europa, o sistema de ônibus geralmente é excelente e integrado ao metrô. No Reino Unido, você sobe pela porta da frente e desce pela do meio. Para parar o ônibus na rua, <strong>estenda a mão claramente</strong> — senão ele pode passar direto.</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 11 ███ -->
 <section class="sc" id="s11">
-  <div class="sc-tag"><span class="n">11</span> Complaints</div>
-  <h2>Fazendo Reclamações</h2>
-  <p class="sc-sub">Quando o problema é sério e uma simples ligação não resolve.</p>
-  <div class="gr"><div class="gr-t">Escalando o problema</div>
-    <div class="cd"><div class="en">"I've called the front desk twice and the issue hasn't been resolved."</div><div class="pt">Já liguei para a recepção duas vezes e o problema não foi resolvido.</div></div>
-    <div class="cd"><div class="en">"I'd like to speak with the manager, please."</div><div class="pt">Gostaria de falar com o gerente, por favor.</div></div>
-    <div class="cd"><div class="en">"This is unacceptable for the price we're paying."</div><div class="pt">Isso é inaceitável pelo preço que estamos pagando.</div></div>
-    <div class="cd"><div class="en">"I'd like a discount on my stay / a complimentary night due to the inconvenience."</div><div class="pt">Gostaria de um desconto na estadia / uma noite cortesia pela inconveniência.</div><div class="nt warm"><strong>"Complimentary"</strong> = cortesia / gratuito. É a forma elegante de pedir compensação. Hotéis de alto padrão frequentemente oferecem upgrades, refeições ou noites grátis para resolver problemas sérios.</div></div>
-    <div class="cd"><div class="en">"The room I was given does not match what I booked. I reserved a suite, not a standard room."</div><div class="pt">O quarto que recebi não corresponde ao que reservei. Reservei uma suíte, não um quarto padrão.</div></div>
-    <div class="cd"><div class="en">"I will be leaving a review about this experience if it isn't resolved."</div><div class="pt">Vou deixar uma avaliação sobre essa experiência se não for resolvido.</div></div>
+  <div class="sc-tag"><span class="n">11</span> Asking for Directions</div>
+  <h2>Pedindo Direção</h2>
+  <p class="sc-sub">Como perguntar onde fica algo — sem soar rude ou confuso.</p>
+
+  <div class="gr"><div class="gr-t">Formas educadas de perguntar</div>
+    <div class="cd"><div class="en">"Excuse me, could you tell me how to get to [place]?"</div><div class="pt">Com licença, poderia me dizer como chegar em [lugar]?</div></div>
+    <div class="cd"><div class="en">"I'm trying to find [place]. Am I going the right way?"</div><div class="pt">Estou tentando encontrar [lugar]. Estou no caminho certo?</div></div>
+    <div class="cd"><div class="en">"Do you know where the nearest [pharmacy / ATM / subway station] is?"</div><div class="pt">Sabe onde fica a [farmácia / caixa eletrônico / estação de metrô] mais próxima?</div></div>
+    <div class="cd"><div class="en">"Is it within walking distance?"</div><div class="pt">Dá para ir a pé?</div><div class="nt info"><strong>"Within walking distance"</strong> = a uma distância caminhável. Expressão extremamente útil e natural.</div></div>
+    <div class="cd"><div class="en">"How far is it from here?"</div><div class="pt">Quão longe é daqui?</div></div>
+    <div class="cd"><div class="en">"Is it on this street or do I need to turn?"</div><div class="pt">É nessa rua ou preciso virar?</div></div>
+    <div class="cd"><div class="en">"Can you point me in the right direction?"</div><div class="pt">Pode me indicar a direção certa?</div></div>
+    <div class="cd"><div class="en">"Can you show me on the map?"</div><div class="pt">Pode me mostrar no mapa?</div></div>
   </div>
-  <div class="bk note">
-    <h4>Frases que Funcionam Melhor</h4>
-    <p>A chave para reclamar em inglês é manter a <strong>firmeza sem perder a educação</strong>. Frases que começam com <strong>"I understand that…, but…"</strong> (Eu entendo que…, mas…) ou <strong>"I appreciate your help, however…"</strong> (Agradeço a ajuda, porém…) mostram que você é razoável — e aumentam muito suas chances de conseguir o que quer. Agressividade fecha portas; assertividade educada abre.</p>
+
+  <div class="dlg">
+    <div class="dlg-h">Diálogo Prático</div>
+    <div class="dlg-ctx">Na rua — você está procurando um museu</div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Excuse me, I'm trying to find the Met Museum. Am I going the right way?</div><div class="pt">Com licença, estou tentando encontrar o Met Museum. Estou no caminho certo?</div></div></div>
+    <div class="ln"><div class="av them">STR</div><div class="bb"><div class="en">Actually, you're going the wrong way. You need to go back two blocks, then turn left on Fifth Avenue. You can't miss it.</div><div class="pt">Na verdade, está na direção errada. Precisa voltar duas quadras, depois virar à esquerda na Fifth Avenue. Não tem como errar.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Two blocks back, then left on Fifth. Got it. Is it far from here?</div><div class="pt">Duas quadras para trás, depois esquerda na Fifth. Entendi. É longe daqui?</div></div></div>
+    <div class="ln"><div class="av them">STR</div><div class="bb"><div class="en">About a ten-minute walk. You'll see it on the right side.</div><div class="pt">Uns dez minutos a pé. Vai ver do lado direito.</div></div></div>
+    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Thank you so much! I appreciate it.</div><div class="pt">Muito obrigado! Eu agradeço.</div></div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 12 ███ -->
 <section class="sc" id="s12">
-  <div class="sc-tag"><span class="n">12</span> Safety</div>
-  <h2>Segurança na Hospedagem</h2>
-  <p class="sc-sub">Emergências, objetos perdidos e situações que ninguém quer ter — mas precisa saber lidar.</p>
-  <div class="gr"><div class="gr-t">Situações de segurança</div>
-    <div class="cd"><div class="en">"I locked myself out of my room. Can you let me in?"</div><div class="pt">Me tranquei para fora do quarto. Podem me deixar entrar?</div></div>
-    <div class="cd"><div class="en">"Something was stolen from my room. I need to report it."</div><div class="pt">Algo foi roubado do meu quarto. Preciso reportar.</div></div>
-    <div class="cd"><div class="en">"I left my passport / wallet / jewelry in the safe and I can't open it."</div><div class="pt">Deixei meu passaporte / carteira / joias no cofre e não consigo abrir.</div></div>
-    <div class="cd"><div class="en">"Is there a fire escape / emergency exit on this floor?"</div><div class="pt">Tem saída de emergência / escada de incêndio neste andar?</div></div>
-    <div class="cd"><div class="en">"The fire alarm went off. Is this a drill or a real emergency?"</div><div class="pt">O alarme de incêndio disparou. É um simulado ou emergência real?</div></div>
-    <div class="cd"><div class="en">"I don't feel safe in my room. There's someone suspicious in the hallway."</div><div class="pt">Não me sinto seguro(a) no meu quarto. Tem alguém suspeito no corredor.</div></div>
+  <div class="sc-tag"><span class="n">12</span> Understanding Directions</div>
+  <h2>Entendendo Direções</h2>
+  <p class="sc-sub">O vocabulário essencial que você vai ouvir na resposta — e que precisa entender na hora.</p>
+
+  <div class="gr"><div class="gr-t">Termos de direção</div>
+    <div class="cd"><div class="en">"Go straight" / "Keep going straight ahead"</div><div class="pt">Siga em frente / Continue reto.</div></div>
+    <div class="cd"><div class="en">"Turn left" / "Turn right" / "Make a U-turn"</div><div class="pt">Vire à esquerda / Vire à direita / Faça um retorno.</div></div>
+    <div class="cd"><div class="en">"It's on the left side / the right side / the corner"</div><div class="pt">Fica do lado esquerdo / direito / na esquina.</div></div>
+    <div class="cd"><div class="en">"Go past [landmark]" / "It's right after [place]"</div><div class="pt">Passe [referência] / Fica logo depois de [lugar].</div></div>
+    <div class="cd"><div class="en">"It's across the street from [place]" / "It's next to [place]"</div><div class="pt">Fica do outro lado da rua de [lugar] / Fica ao lado de [lugar].</div></div>
+    <div class="cd"><div class="en">"It's about two blocks down" / "Three blocks north"</div><div class="pt">Fica umas duas quadras adiante / Três quadras ao norte.</div><div class="nt info"><strong>"Block"</strong> = quarteirão / quadra. Nos EUA, distâncias urbanas são medidas em blocks. Um block é normalmente 80–100 metros.</div></div>
+    <div class="cd"><div class="en">"You can't miss it."</div><div class="pt">Não tem como errar. — Expressão muito usada, significa que é fácil de encontrar.</div></div>
+  </div>
+
+  <div class="vg">
+    <div class="vi"><div class="en">intersection / crossroads</div><div class="pt">cruzamento</div></div>
+    <div class="vi"><div class="en">crosswalk</div><div class="pt">faixa de pedestres</div></div>
+    <div class="vi"><div class="en">traffic light / stoplight</div><div class="pt">semáforo</div></div>
+    <div class="vi"><div class="en">roundabout</div><div class="pt">rotatória</div></div>
+    <div class="vi"><div class="en">overpass / underpass</div><div class="pt">viaduto / passagem subterrânea</div></div>
+    <div class="vi"><div class="en">dead end / cul-de-sac</div><div class="pt">rua sem saída</div></div>
+    <div class="vi"><div class="en">one-way street</div><div class="pt">rua de mão única</div></div>
+    <div class="vi"><div class="en">sidewalk</div><div class="pt">calçada</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 13 ███ -->
 <section class="sc" id="s13">
-  <div class="sc-tag"><span class="n">13</span> Airbnb & Rentals</div>
-  <h2>Airbnb e Aluguéis de Temporada</h2>
-  <p class="sc-sub">Comunicação com o anfitrião, regras da casa e problemas na chegada.</p>
-  <div class="gr"><div class="gr-t">Mensagens para o anfitrião</div>
-    <div class="cd"><div class="en">"Hi! I just booked your place. What are the check-in instructions?"</div><div class="pt">Oi! Acabei de reservar seu espaço. Quais são as instruções de check-in?</div></div>
-    <div class="cd"><div class="en">"What time can we check in? Our flight arrives at 2 PM."</div><div class="pt">A que horas podemos fazer check-in? Nosso voo chega às 14h.</div></div>
-    <div class="cd"><div class="en">"Where is the lockbox / key safe? What's the code?"</div><div class="pt">Onde fica a caixa de chave? Qual é o código?</div><div class="nt wine"><strong>Lockbox</strong> ou <strong>key safe</strong> = caixinha com cadeado na porta onde o anfitrião deixa a chave. Muito comum em Airbnbs — permite check-in sem encontrar o anfitrião.</div></div>
-    <div class="cd"><div class="en">"Is there parking available? Where should we park?"</div><div class="pt">Tem estacionamento disponível? Onde devemos estacionar?</div></div>
-    <div class="cd"><div class="en">"How do I work the washing machine / the thermostat / the coffee maker?"</div><div class="pt">Como funciona a máquina de lavar / o termostato / a cafeteira?</div></div>
-    <div class="cd"><div class="en">"What are the house rules? Is there anything specific we should know?"</div><div class="pt">Quais são as regras da casa? Tem algo específico que devemos saber?</div></div>
+  <div class="sc-tag"><span class="n">13</span> Problems</div>
+  <h2>Problemas na Estrada e no Transporte</h2>
+  <p class="sc-sub">Pneu furado, acidente, carro quebrado — e como resolver tudo em inglês.</p>
+
+  <div class="gr"><div class="gr-t">Emergências com o carro</div>
+    <div class="cd"><div class="en">"I have a flat tire. Is there a spare in the trunk?"</div><div class="pt">Estou com pneu furado. Tem estepe no porta-malas?</div></div>
+    <div class="cd"><div class="en">"The car broke down. I need roadside assistance."</div><div class="pt">O carro quebrou. Preciso de assistência na estrada.</div><div class="nt info"><strong>Roadside assistance</strong> = assistência na estrada (guincho, socorro mecânico). A maioria das locadoras oferece um número 24h — salve no celular antes de sair.</div></div>
+    <div class="cd"><div class="en">"The engine won't start." / "The battery is dead."</div><div class="pt">O motor não liga. / A bateria morreu.</div></div>
+    <div class="cd"><div class="en">"I locked the keys inside the car."</div><div class="pt">Tranquei as chaves dentro do carro.</div></div>
+    <div class="cd"><div class="en">"The check engine light came on. What should I do?"</div><div class="pt">A luz de verificação do motor acendeu. O que devo fazer?</div></div>
+    <div class="cd"><div class="en">"I need a tow truck."</div><div class="pt">Preciso de um guincho.</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Problemas na chegada</div>
-    <div class="cd"><div class="en">"The code for the lockbox isn't working. Can you help?"</div><div class="pt">O código da caixa de chave não está funcionando. Pode ajudar?</div></div>
-    <div class="cd"><div class="en">"The apartment doesn't match the listing. It's much smaller / dirtier than the photos."</div><div class="pt">O apartamento não corresponde ao anúncio. É muito menor / mais sujo do que nas fotos.</div></div>
-    <div class="cd"><div class="en">"There's no hot water / the Wi-Fi isn't working / the AC is broken."</div><div class="pt">Não tem água quente / o Wi-Fi não funciona / o ar-condicionado está quebrado.</div></div>
-    <div class="cd"><div class="en">"I need to contact Airbnb support to request a refund or alternative accommodation."</div><div class="pt">Preciso contatar o suporte do Airbnb para solicitar reembolso ou acomodação alternativa.</div></div>
+
+  <div class="gr"><div class="gr-t">Acidente de trânsito</div>
+    <div class="cd"><div class="en">"I was in a car accident. No one is hurt, but the car is damaged."</div><div class="pt">Sofri um acidente de carro. Ninguém se machucou, mas o carro está danificado.</div></div>
+    <div class="cd"><div class="en">"Can we exchange insurance information?"</div><div class="pt">Podemos trocar informações de seguro?</div></div>
+    <div class="cd"><div class="en">"I need to file a police report."</div><div class="pt">Preciso registrar um boletim de ocorrência.</div></div>
+    <div class="cd"><div class="en">"I need to call the rental car company to report the accident."</div><div class="pt">Preciso ligar para a locadora para reportar o acidente.</div></div>
+    <div class="cd"><div class="en">"The other driver ran a red light and hit me."</div><div class="pt">O outro motorista furou o sinal vermelho e bateu em mim.</div></div>
   </div>
+
+  <div class="gr"><div class="gr-t">Problemas com transporte público</div>
+    <div class="cd"><div class="en">"I got on the wrong train / bus. How do I get back?"</div><div class="pt">Peguei o trem / ônibus errado. Como volto?</div></div>
+    <div class="cd"><div class="en">"I missed my stop. What's the best way to go back?"</div><div class="pt">Passei da minha parada. Qual o melhor jeito de voltar?</div></div>
+    <div class="cd"><div class="en">"My metro card isn't working at the turnstile."</div><div class="pt">Meu cartão de metrô não está funcionando na catraca.</div></div>
+    <div class="cd"><div class="en">"Is there a service disruption on this line today?"</div><div class="pt">Tem interrupção de serviço nessa linha hoje?</div></div>
+    <div class="cd"><div class="en">"I think someone picked my pocket on the subway."</div><div class="pt">Acho que alguém bateu minha carteira no metrô.</div></div>
+  </div>
+
   <div class="bk alert">
-    <h4>Situação Grave — Quando o Anúncio Não Existe</h4>
-    <p>Se chegar ao endereço e o imóvel não existir, não corresponder ao anúncio, ou estiver em condições inseguras, <strong>documente tudo com fotos</strong>, entre em contato com o suporte da plataforma imediatamente, e peça <strong>"rebooking assistance"</strong> (assistência de reacomodação). Tanto Airbnb quanto Booking.com têm políticas de proteção — mas você precisa reportar dentro das primeiras 24 horas.</p>
+    <h4>Se For Parado Pela Polícia nos EUA</h4>
+    <p>Se um carro de polícia acender as luzes atrás de você: <strong>encoste imediatamente à direita</strong>, desligue o motor, mantenha as mãos visíveis no volante, e <strong>não saia do carro</strong>. Espere o policial vir até sua janela. Frases essenciais: <strong>"Good evening, officer."</strong> (Boa noite, agente.) — <strong>"I'm a tourist. Here's my license and rental agreement."</strong> (Sou turista. Aqui estão minha carteira e contrato de aluguel.) — <strong>"Was I speeding? I'm sorry, I wasn't aware of the speed limit."</strong> (Eu estava acima da velocidade? Desculpe, não sabia o limite.)</p>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
-<!-- ═══ BANNER ═══ -->
-<div class="banner"><div class="tc"><h3>Hora de <em>Partir</em></h3>
-<p>As últimas seções cobrem tudo sobre check-out, revisão da conta, minibar, gorjetas e despedidas.</p></div></div>
 <!-- ███ 14 ███ -->
 <section class="sc" id="s14">
-  <div class="sc-tag"><span class="n">14</span> Check-out & Bill</div>
-  <h2>Check-out e Revisão da Conta</h2>
-  <p class="sc-sub">O momento final — verifique tudo antes de pagar e ir embora.</p>
-  <div class="gr"><div class="gr-t">Frases do check-out</div>
-    <div class="cd"><div class="en">"I'd like to check out, please. Room 814."</div><div class="pt">Gostaria de fazer check-out, por favor. Quarto 814.</div></div>
-    <div class="cd"><div class="en">"Could I get a late check-out? Even just one extra hour would help."</div><div class="pt">Poderia fazer check-out mais tarde? Mesmo que seja só uma hora a mais, já ajudaria.</div></div>
-    <div class="cd"><div class="en">"Could I see an itemized bill, please?"</div><div class="pt">Poderia ver a conta detalhada, por favor?</div><div class="nt warm">Sempre peça a <strong>itemized bill</strong> (conta detalhada) antes de pagar. Revise cada cobrança — erros de minibar, diárias extras e taxas fantasmas são mais comuns do que você imagina.</div></div>
-    <div class="cd"><div class="en">"I didn't use the minibar. Can you remove that charge?"</div><div class="pt">Não usei o minibar. Pode remover essa cobrança?</div></div>
-    <div class="cd"><div class="en">"I was charged for two nights of parking, but I only used one. Can you check?"</div><div class="pt">Fui cobrado por duas noites de estacionamento, mas usei apenas uma. Pode verificar?</div></div>
-    <div class="cd"><div class="en">"What is this 'resort fee' / 'amenity fee' on my bill?"</div><div class="pt">O que é essa "taxa do resort" / "taxa de amenidades" na minha conta?</div><div class="nt clay"><strong>Resort fee</strong> ou <strong>amenity fee</strong> = taxa obrigatória que muitos hotéis nos EUA cobram além da diária ($25–50/noite). Inclui Wi-Fi, piscina, academia. Geralmente não aparece no preço do Booking — só na conta final. Pergunte ANTES de reservar.</div></div>
+  <div class="sc-tag"><span class="n">14</span> Parking</div>
+  <h2>Estacionamento</h2>
+  <p class="sc-sub">Valet, parquímetro, garagem — e como não levar multa.</p>
+
+  <div class="gr"><div class="gr-t">Frases essenciais</div>
+    <div class="cd"><div class="en">"Is there parking nearby?" / "Where can I park?"</div><div class="pt">Tem estacionamento por perto? / Onde posso estacionar?</div></div>
+    <div class="cd"><div class="en">"How much is parking per hour / per day?"</div><div class="pt">Quanto custa o estacionamento por hora / por dia?</div></div>
+    <div class="cd"><div class="en">"Is this a paid parking zone?"</div><div class="pt">Essa é uma zona de estacionamento pago?</div></div>
+    <div class="cd"><div class="en">"Do I need to feed the meter? / How long can I park here?"</div><div class="pt">Preciso colocar moedas no parquímetro? / Por quanto tempo posso estacionar aqui?</div></div>
+    <div class="cd"><div class="en">"Is valet parking available?" / "How much is valet?"</div><div class="pt">Tem manobrista? / Quanto custa o manobrista?</div><div class="nt tip"><strong>Valet parking</strong> = manobrista. Comum em hotéis, restaurantes e eventos nos EUA. Espere pagar $10–30 + gorjeta de $2–5.</div></div>
+    <div class="cd"><div class="en">"I need my car, please. Here's my valet ticket."</div><div class="pt">Preciso do meu carro, por favor. Aqui está meu ticket do manobrista.</div></div>
   </div>
-  <div class="gr"><div class="gr-t">Minibar — o campo minado</div>
-    <div class="cd"><div class="en">"I only had a bottle of water from the minibar. The rest I didn't touch."</div><div class="pt">Só consumi uma garrafa de água do minibar. O resto não toquei.</div></div>
-    <div class="cd"><div class="en">"I moved a few items to make space but I put them back. I shouldn't be charged."</div><div class="pt">Mexi em alguns itens para abrir espaço, mas coloquei de volta. Não deveria ser cobrado.</div><div class="nt clay">Muitos minibars modernos têm <strong>sensores de peso</strong> — basta tirar o item da prateleira por mais de 30 segundos e a cobrança é automática. Se foi acidental, avise a recepção imediatamente: <strong>"I accidentally moved an item in the minibar but didn't consume it. Please don't charge me."</strong></div></div>
-  </div>
-  <div class="gr"><div class="gr-t">Recibos e documentos</div>
-    <div class="cd"><div class="en">"Can I get a printed receipt / invoice for my stay?"</div><div class="pt">Posso ter um recibo / fatura impressa da estadia?</div></div>
-    <div class="cd"><div class="en">"I need an invoice with my company's name for reimbursement."</div><div class="pt">Preciso de uma fatura com o nome da minha empresa para reembolso.</div></div>
-    <div class="cd"><div class="en">"Can you email me a copy of the final bill?"</div><div class="pt">Pode me enviar por e-mail uma cópia da conta final?</div></div>
-  </div>
-  <div class="dlg">
-    <div class="dlg-h">Diálogo Prático</div>
-    <div class="dlg-ctx">Na recepção — fazendo check-out e revisando a conta</div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Good morning. I'd like to check out. Room 814. Could I see the itemized bill?</div><div class="pt">Bom dia. Gostaria de fazer check-out. Quarto 814. Poderia ver a conta detalhada?</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Of course. Here you go. Four nights, room service on Tuesday, and the minibar.</div><div class="pt">Claro. Aqui está. Quatro noites, room service na terça, e o minibar.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">I see a minibar charge for $18. I only had a water bottle — that was $5 on the menu. I think the rest is incorrect.</div><div class="pt">Estou vendo uma cobrança de minibar de $18. Só consumi uma garrafa de água — era $5 no cardápio. Acho que o restante está incorreto.</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Let me check with housekeeping. You're right — I'll correct that. The new total is $1,247.50.</div><div class="pt">Deixe eu verificar com a governança. Você tem razão — vou corrigir. O novo total é $1.247,50.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">Perfect. Can I get a printed receipt and also have it emailed to me?</div><div class="pt">Perfeito. Posso ter um recibo impresso e também receber por e-mail?</div></div></div>
-    <div class="ln"><div class="av them">RC</div><div class="bb"><div class="en">Absolutely. And would you like us to hold your luggage? Your flight isn't until this evening.</div><div class="pt">Claro. E gostaria que guardássemos sua bagagem? Seu voo só é à noite.</div></div></div>
-    <div class="ln"><div class="av you">You</div><div class="bb"><div class="en">That would be great. I'll pick them up around 4 PM. Thank you for everything!</div><div class="pt">Seria ótimo. Passo para buscar por volta das 16h. Obrigado por tudo!</div></div></div>
-  </div>
-  <div class="bk tip">
-    <h4>Dica de Ouro</h4>
-    <p>No check-out, pergunte sempre: <strong>"Is there anything else on the bill I should know about?"</strong> (Tem mais alguma coisa na conta que eu deva saber?) — Essa frase pega cobranças de estacionamento, resort fee e outras taxas que podem estar escondidas. E sempre peça <strong>"Can you remove the hold on my credit card?"</strong> (Pode remover o bloqueio do meu cartão?) — o bloqueio de incidentals pode levar dias para cair se você não pedir.</p>
+
+  <div class="gr"><div class="gr-t">Placas de estacionamento — decifrando</div>
+    <div class="cd"><div class="en">"No parking anytime"</div><div class="pt">Proibido estacionar a qualquer hora.</div></div>
+    <div class="cd"><div class="en">"2-hour parking 8AM–6PM except Sundays"</div><div class="pt">Estacionamento de 2 horas entre 8h–18h exceto domingos.</div></div>
+    <div class="cd"><div class="en">"Permit parking only / Resident parking only"</div><div class="pt">Estacionamento apenas com permissão / Apenas moradores.</div></div>
+    <div class="cd"><div class="en">"Tow-away zone"</div><div class="pt">Zona de reboque — seu carro será guinchado.</div><div class="nt warn">Se seu carro for rebocado, vai precisar dizer: <strong>"My car was towed. Where is the tow lot?"</strong> (Meu carro foi guinchado. Onde fica o pátio de reboque?) Espere pagar $200–500+ para recuperar.</div></div>
+    <div class="cd"><div class="en">"Handicapped parking / Accessible parking"</div><div class="pt">Estacionamento para pessoas com deficiência / Acessível.</div></div>
   </div>
 </section>
 <div class="sep"><span class="d"></span></div>
 <!-- ███ 15 ███ -->
 <section class="sc" id="s15">
-  <div class="sc-tag"><span class="n">15</span> Tipping</div>
-  <h2>Gorjetas no Hotel</h2>
-  <p class="sc-sub">Quem, quanto e quando — o guia definitivo para não errar.</p>
-  <p class="sc-intro">Nos EUA, gorjeta em hotéis é esperada e faz parte da cultura. Não dar pode ser visto como indelicadeza. Na Europa, é menos obrigatória, mas apreciada. Aqui está o que se espera em cada situação.</p>
-  <div class="gr"><div class="gr-t">Guia de gorjetas — EUA</div>
-    <div class="cd"><div class="en">Bellhop / Porter — $1–2 per bag</div><div class="pt">Carregador de malas — $1–2 por mala.</div></div>
-    <div class="cd"><div class="en">Housekeeping — $2–5 per night</div><div class="pt">Governança / limpeza — $2–5 por noite.</div><div class="nt warm">Deixe a gorjeta no travesseiro ou na mesa de cabeceira com um bilhete: <strong>"Thank you / Housekeeping"</strong>. Faça isso diariamente, não apenas no último dia — a pessoa que limpa pode ser diferente a cada dia.</div></div>
-    <div class="cd"><div class="en">Concierge — $5–20 depending on the favor</div><div class="pt">Concierge — $5–20 dependendo do favor.</div></div>
-    <div class="cd"><div class="en">Valet parking — $2–5 when they bring the car</div><div class="pt">Manobrista — $2–5 quando trazem o carro.</div></div>
-    <div class="cd"><div class="en">Room service — 15–20% or check if gratuity is included</div><div class="pt">Room service — 15–20% ou verifique se a gorjeta já está inclusa.</div><div class="nt wine">Muitos hotéis já adicionam <strong>"service charge"</strong> ou <strong>"gratuity"</strong> automaticamente na conta de room service. Verifique antes de dar gorjeta extra — procure na conta: <strong>"Gratuity included"</strong> ou <strong>"Service charge: 18%"</strong>.</div></div>
-    <div class="cd"><div class="en">Doorman (hails a cab for you) — $1–2</div><div class="pt">Porteiro (chama um táxi para você) — $1–2.</div></div>
+  <div class="sc-tag"><span class="n">15</span> Tolls & Fines</div>
+  <h2>Pedágios, Multas e Infrações</h2>
+  <p class="sc-sub">O que saber para não ter surpresas desagradáveis no cartão de crédito semanas depois.</p>
+
+  <div class="gr"><div class="gr-t">Pedágios</div>
+    <div class="cd"><div class="en">"Is this a toll road?"</div><div class="pt">Essa é uma estrada com pedágio?</div></div>
+    <div class="cd"><div class="en">"Do I pay cash at the toll booth or is it electronic only?"</div><div class="pt">Pago em dinheiro na cabine ou é só eletrônico?</div><div class="nt info">Nos EUA (especialmente Flórida, Nova York, Illinois), muitos pedágios são <strong>100% eletrônicos</strong> — sem cabine. Se não tiver dispositivo, a placa é fotografada e a cobrança vai para a locadora — com taxa administrativa de $10–15 por pedágio.</div></div>
+    <div class="cd"><div class="en">"I rented a toll transponder / E-ZPass from the rental company."</div><div class="pt">Aluguei um dispositivo de pedágio da locadora.</div></div>
+    <div class="cd"><div class="en">"How much are the tolls on this route?"</div><div class="pt">Quanto custam os pedágios nessa rota?</div></div>
   </div>
-  <div class="bk cultural">
-    <h4>Gorjetas na Europa e no Resto do Mundo</h4>
-    <p>Na <strong>Europa continental</strong>, gorjeta em hotel não é obrigatória, mas deixar 1–2 euros por noite para a governança é um gesto apreciado. No <strong>Reino Unido</strong>, é similar — discreto e opcional. No <strong>Japão</strong>, gorjeta é <strong>considerada ofensiva</strong> — nunca ofereça. Na <strong>Ásia</strong> em geral, varia muito por país. Na dúvida: pesquise antes da viagem ou pergunte na recepção: <strong>"Is tipping customary here?"</strong> (Gorjeta é costume aqui?)</p>
+
+  <div class="gr"><div class="gr-t">Multas</div>
+    <div class="cd"><div class="en">"I got a parking ticket. How do I pay it?"</div><div class="pt">Levei uma multa de estacionamento. Como pago?</div></div>
+    <div class="cd"><div class="en">"I received a speeding ticket. Can I pay online?"</div><div class="pt">Recebi uma multa de velocidade. Posso pagar online?</div></div>
+    <div class="cd"><div class="en">"The rental company charged me for a traffic violation I didn't commit."</div><div class="pt">A locadora me cobrou por uma infração de trânsito que não cometi.</div></div>
+    <div class="cd"><div class="en">"I'd like to dispute this fine. Where can I file an appeal?"</div><div class="pt">Gostaria de contestar essa multa. Onde posso recorrer?</div></div>
+  </div>
+
+  <div class="bk tip">
+    <h4>Dica de Ouro Final</h4>
+    <p>Antes de dirigir no exterior: (1) Baixe mapas offline no Google Maps ou Waze — nem sempre terá sinal; (2) Configure o GPS para <strong>milhas</strong> nos EUA e <strong>quilômetros</strong> na Europa; (3) Salve o número da assistência na estrada da locadora; (4) Tire foto do carro ao pegar e ao devolver; (5) Pergunte sobre o dispositivo de pedágio antes de sair do balcão. Essas cinco ações evitam 90% dos problemas.</p>
   </div>
 </section>
+<!-- ═══ FOOTER ═══ -->
 <div class="sep"><span class="d"></span></div>
+<div class="vb-dl"><a class="vb-dl-btn" href="viaje-bem-04-locomocao.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg>Baixar o material em PDF</a><span class="vb-dl-meta">PDF · 18 páginas</span></div>
+<nav class="vb-pager" aria-label="Navegação entre módulos">
+  <a class="vb-card vb-prev" href="../03-hospedagem/"><span class="vb-dir">← Anterior</span><span class="vb-num">Módulo 03</span><span class="vb-t">Accommodation &amp; Hotel Stays</span></a>
+  <a class="vb-home" href="../">Todos os módulos</a>
+  <a class="vb-card vb-next" href="../05-restaurantes/"><span class="vb-dir">Próximo →</span><span class="vb-num">Módulo 05</span><span class="vb-t">Dining &amp; Drinks</span></a>
+</nav>
 <footer class="footer">
-  <div class="footer-b">Accommodation & Hotel Stays — English for Travelers</div>
+  <div class="footer-b">Getting Around — English for Travelers</div>
   <p class="footer-t">Conteúdo exclusivo para fins educacionais.<br>Desenvolvido com excelência para alunos que buscam comunicação internacional de alto nível.</p>
+  <div class="sig">
+    <div><div class="sig-n">Thaiana Faria</div><div class="sig-r">Especialista em Inglês Médico e Comunicação Científica · MD Talk</div></div>
+    <div><div class="sig-n">Thiago Faria</div><div class="sig-r">Produção de Conteúdo Técnico · The Engine Lab</div></div>
+  </div>
 </footer>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p></main>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+</main>
+</body>
+</html>
